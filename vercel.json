@@ -1,9 +1,4 @@
 {
-  "build": {
-    "env": {
-      "VITE_APP_URL": "@vite_app_url"
-    }
-  },
   "functions": {
     "app/api/**/*.js": {
       "memory": 128

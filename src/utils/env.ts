@@ -6,10 +6,11 @@
 // 验证必要的环境变量
 export const validateEnvVars = () => {
   const requiredVars = {
-    VITE_APP_URL: import.meta.env.VITE_APP_URL,
+    // VITE_APP_URL is not actually required for basic functionality
   };
 
   const optionalVars = {
+    VITE_APP_URL: import.meta.env.VITE_APP_URL,
     VITE_REPLICATE_API_KEY: import.meta.env.VITE_REPLICATE_API_KEY,
     VITE_SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL,
     VITE_SUPABASE_ANON_KEY: import.meta.env.VITE_SUPABASE_ANON_KEY,
