@@ -1,9 +1,10 @@
 import React from 'react';
+import StoryFactory from './components/StoryFactory';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <p>Start prompting (or editing) to see magic happen :)</p>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      <StoryFactory />
     </div>
   );
 }
