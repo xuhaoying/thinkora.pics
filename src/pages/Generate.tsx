@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Sparkles, Download, Wand2, ImageIcon } from 'lucide-react';
+import { Sparkles, Download, Wand2 } from 'lucide-react';
 import { useColoringBook } from '../context/ColoringBookContext';
 import aiService from '../services/aiService';
 import { validateEnvVars } from '../utils/env';
+import { useTranslation } from 'react-i18next';
 
 interface GenerateForm {
   prompt: string;
@@ -14,6 +15,7 @@ interface GenerateForm {
 
 const Generate = () => {
   const { state, dispatch } = useColoringBook();
+  const { t } = useTranslation();
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<GenerateForm>({
     defaultValues: {
       ageGroup: 'medium',
@@ -28,28 +30,21 @@ const Generate = () => {
   const hasApiKey = envStatus.hasReplicateKey;
 
   const categories = [
-    { id: 'animals', name: '动物', emoji: '🐾', examples: '小猫, 小狗, 兔子' },
-    { id: 'fantasy', name: '魔法', emoji: '🦄', examples: '独角兽, 公主, 城堡' },
-    { id: 'nature', name: '自然', emoji: '🌸', examples: '花朵, 树木, 蝴蝶' },
-    { id: 'vehicles', name: '交通', emoji: '🚗', examples: '汽车, 飞机, 火车' },
-    { id: 'holidays', name: '节日', emoji: '🎄', examples: '圣诞树, 生日蛋糕' },
-    { id: 'educational', name: '学习', emoji: '📚', examples: '字母, 数字, 形状' }
+    { id: 'animals', name: t('generate.categories.animals'), emoji: '🐾', examples: t('generate.categories.examples.animals') },
+    { id: 'fantasy', name: t('generate.categories.fantasy'), emoji: '🦄', examples: t('generate.categories.examples.fantasy') },
+    { id: 'nature', name: t('generate.categories.nature'), emoji: '🌸', examples: t('generate.categories.examples.nature') },
+    { id: 'vehicles', name: t('generate.categories.vehicles'), emoji: '🚗', examples: t('generate.categories.examples.vehicles') },
+    { id: 'holidays', name: t('generate.categories.holidays'), emoji: '🎄', examples: t('generate.categories.examples.holidays') },
+    { id: 'educational', name: t('generate.categories.educational'), emoji: '📚', examples: t('generate.categories.examples.educational') }
   ];
 
   const ageGroups = [
-    { value: 'simple', label: '3-6岁', description: '大图案，简单线条' },
-    { value: 'medium', label: '7-12岁', description: '适中细节，最受欢迎' },
-    { value: 'complex', label: '13岁+', description: '复杂图案，精细线条' }
+    { value: 'simple', label: t('generate.ageGroups.simple.label'), description: t('generate.ageGroups.simple.description') },
+    { value: 'medium', label: t('generate.ageGroups.medium.label'), description: t('generate.ageGroups.medium.description') },
+    { value: 'complex', label: t('generate.ageGroups.complex.label'), description: t('generate.ageGroups.complex.description') }
   ];
 
-  const quickPrompts = [
-    '可爱的小猫咪',
-    '美丽的公主',
-    '神奇的独角兽',
-    '漂亮的花朵',
-    '酷炫的跑车',
-    '生日蛋糕'
-  ];
+  const quickPrompts = t('generate.quickPrompts', { returnObjects: true }) as string[];
 
   const onSubmit = async (data: GenerateForm) => {
     dispatch({ type: 'SET_GENERATING', payload: true });
@@ -91,7 +86,7 @@ const Generate = () => {
       
     } catch (error) {
       console.error('Generation error:', error);
-      dispatch({ type: 'SET_ERROR', payload: `生成失败: ${error instanceof Error ? error.message : '未知错误'}` });
+      dispatch({ type: 'SET_ERROR', payload: `${t('common.error')}: ${error instanceof Error ? error.message : t('common.error')}` });
     } finally {
       dispatch({ type: 'SET_GENERATING', payload: false });
     }
@@ -156,14 +151,14 @@ const Generate = () => {
       
     } catch (error) {
       console.error('Download failed:', error);
-      alert('下载失败，请稍后重试');
+      alert(`${t('common.download')} ${t('common.error')}, ${t('common.retry')}`);
     }
   };
 
   // Regenerate function
   const handleRegenerate = () => {
     if (!promptValue || !categoryValue) {
-      alert('请先填写完整的生成信息');
+      alert(t('generate.form.promptRequired'));
       return;
     }
     
@@ -187,10 +182,10 @@ const Generate = () => {
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          🎨 AI智能涂色页生成器
+          🎨 {t('generate.title')}
         </h1>
         <p className="text-lg text-gray-600">
-          告诉我你想画什么，AI会为你创造专属的涂色页！
+          {t('generate.subtitle')}
         </p>
       </div>
 
@@ -202,7 +197,7 @@ const Generate = () => {
             {/* Quick Prompts */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                💡 快速选择（点击直接使用）
+                💡 {t('generate.form.quickPrompts')}
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {quickPrompts.map((prompt, index) => (
@@ -221,13 +216,13 @@ const Generate = () => {
             {/* Main Prompt Input */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                🖍️ 你想画什么？
+                🖍️ {t('generate.form.promptLabel')}
               </label>
               <textarea
-                {...register('prompt', { required: '请描述你想要的涂色页内容' })}
+                {...register('prompt', { required: t('generate.form.promptRequired') })}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
                 rows={3}
-                placeholder="例如：一只可爱的小猫在花园里玩耍..."
+                placeholder={t('generate.form.promptPlaceholder')}
               />
               {errors.prompt && (
                 <p className="text-red-500 text-sm mt-1">{errors.prompt.message}</p>
@@ -237,13 +232,13 @@ const Generate = () => {
             {/* Category Selection */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                🏷️ 选择主题
+                🏷️ {t('generate.form.categoryLabel')}
               </label>
               <div className="grid grid-cols-2 gap-3">
                 {categories.map(category => (
                   <label key={category.id} className="cursor-pointer">
                     <input
-                      {...register('category', { required: '请选择一个主题' })}
+                      {...register('category', { required: t('generate.form.categoryRequired') })}
                       type="radio"
                       value={category.id}
                       className="sr-only"
@@ -268,7 +263,7 @@ const Generate = () => {
             {/* Age Group Selection */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                👶 适合年龄
+                👶 {t('generate.form.ageLabel')}
               </label>
               <div className="grid grid-cols-3 gap-3">
                 {ageGroups.map(group => (

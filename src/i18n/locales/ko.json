@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "home": "홈",
+    "generate": "만들기",
+    "gallery": "갤러리",
+    "brandName": "AI 컬러링북",
+    "brandSubtitle": "AI 컬러링 페이지 생성기",
+    "startCreating": "만들기 시작"
+  },
+  "home": {
+    "hero": {
+      "title": "AI로 마법을 창조하세요",
+      "subtitle": "컬러링 페이지",
+      "description": "상상력을 아름답고 독특한 컬러링 페이지로 변환하세요. 모든 연령의 어린이들에게 안전하고 교육적이며 무한히 창의적입니다.",
+      "startCreating": "만들기 시작",
+      "viewGallery": "갤러리 보기"
+    },
+    "features": {
+      "title": "왜 AI 컬러링북을 선택해야 할까요?",
+      "aiPowered": {
+        "title": "AI 기반 생성",
+        "description": "고급 AI 기술로 독특한 컬러링 페이지를 즉시 만드세요."
+      },
+      "highQuality": {
+        "title": "고품질 다운로드",
+        "description": "어떤 프린터에도 완벽한 선명하고 인쇄 준비된 PDF를 다운로드하세요."
+      },
+      "childSafe": {
+        "title": "어린이 안전 콘텐츠",
+        "description": "모든 콘텐츠는 검토되며 어린이를 위해 특별히 설계되었습니다."
+      },
+      "educational": {
+        "title": "교육적 가치",
+        "description": "컬러링을 통해 창의성, 집중력, 학습을 촉진합니다."
+      }
+    },
+    "categories": {
+      "title": "인기 카테고리",
+      "animals": "동물",
+      "fantasy": "판타지",
+      "nature": "자연",
+      "vehicles": "차량",
+      "holidays": "휴일",
+      "educational": "교육",
+      "pagesCount": "페이지"
+    },
+    "pricing": {
+      "title": "간단하고 공정한 가격",
+      "payPerPage": {
+        "title": "페이지당 결제",
+        "price": "₩680",
+        "description": "가끔 사용하기에 완벽",
+        "features": {
+          "highQuality": "고품질 다운로드",
+          "instant": "즉시 생성",
+          "commercial": "상업적 사용 허용"
+        },
+        "button": "시작하기"
+      },
+      "monthly": {
+        "title": "월간 무제한",
+        "price": "₩13,500",
+        "description": "가족을 위한 최고의 가치",
+        "badge": "가장 인기",
+        "features": {
+          "unlimited": "무제한 생성",
+          "priority": "우선 처리",
+          "premium": "프리미엄 템플릿",
+          "sharing": "가족 공유"
+        },
+        "button": "무료 체험 시작"
+      }
+    }
+  },
+  "generate": {
+    "title": "AI 스마트 컬러링 페이지 생성기",
+    "subtitle": "무엇을 그리고 싶은지 말해주세요. AI가 당신만의 독특한 컬러링 페이지를 만들어 드립니다!",
+    "form": {
+      "quickPrompts": "빠른 선택 (클릭하여 사용)",
+      "promptLabel": "무엇을 그리고 싶나요?",
+      "promptPlaceholder": "예: 정원에서 놀고 있는 귀여운 새끼 고양이...",
+      "promptRequired": "컬러링 페이지에 원하는 내용을 설명해 주세요",
+      "categoryLabel": "테마 선택",
+      "categoryRequired": "테마를 선택해 주세요",
+      "ageLabel": "적합한 연령",
+      "advancedToggle": "고급 설정",
+      "styleLabel": "그림 스타일 (선택사항)",
+      "generateButton": "컬러링 페이지 생성",
+      "generating": "AI가 만들고 있어요...",
+      "preview": "생성 미리보기:"
+    },
+    "categories": {
+      "animals": "동물",
+      "fantasy": "마법",
+      "nature": "자연",
+      "vehicles": "교통수단",
+      "holidays": "휴일",
+      "educational": "학습",
+      "examples": {
+        "animals": "고양이, 개, 토끼",
+        "fantasy": "유니콘, 공주, 성",
+        "nature": "꽃, 나무, 나비",
+        "vehicles": "자동차, 비행기, 기차",
+        "holidays": "크리스마스 트리, 생일 케이크",
+        "educational": "글자, 숫자, 모양"
+      }
+    },
+    "ageGroups": {
+      "simple": {
+        "label": "3-6세",
+        "description": "큰 패턴, 간단한 선"
+      },
+      "medium": {
+        "label": "7-12세",
+        "description": "중간 세부사항, 가장 인기"
+      },
+      "complex": {
+        "label": "13세 이상",
+        "description": "복잡한 패턴, 세밀한 선"
+      }
+    },
+    "styles": {
+      "cute": "귀여운 만화 (추천)",
+      "simple": "간단한 선",
+      "detailed": "상세한 사실적",
+      "mandala": "만다라 패턴",
+      "geometric": "기하학적 모양"
+    },
+    "status": {
+      "aiEnabled": "AI 생성 활성화",
+      "aiEnabledDesc": "실제 AI 기술을 사용하여 당신만의 독특한 컬러링 페이지를 생성합니다",
+      "demoMode": "현재 데모 모드 사용 중",
+      "demoModeDesc": "실제 AI 생성을 활성화하려면 .env 파일에서 VITE_REPLICATE_API_KEY를 설정하세요"
+    },
+    "result": {
+      "title": "당신만의 전용 컬러링 페이지",
+      "download": "이미지 다운로드",
+      "regenerate": "다시 생성",
+      "generating": "생성 중...",
+      "tip": "팁: A4 용지로 인쇄하는 것을 권장하며, 프린터를 '흑백' 모드로 설정하면 최상의 결과를 얻을 수 있습니다!",
+      "placeholder": "컬러링 페이지가 여기에 나타납니다",
+      "placeholderDesc": "왼쪽 양식을 작성하고 생성 버튼을 클릭하여 만들기를 시작하세요",
+      "features": "고해상도 품질 • 인쇄 친화적 • 안전한 콘텐츠"
+    },
+    "aiStatus": {
+      "creating": "AI 스마트 생성 중...",
+      "generatingPage": "당신만의 전용 컬러링 페이지를 생성하고 있습니다",
+      "estimatedTime": "예상 시간: 30-120초, 잠시만 기다려 주세요",
+      "analyzing": "설명을 분석하고 있습니다...",
+      "matching": "최적의 스타일을 매칭하고 있습니다...",
+      "generating": "고해상도 이미지를 생성하고 있습니다..."
+    },
+    "tips": {
+      "title": "사용 팁",
+      "specific": {
+        "title": "구체적으로 설명하세요",
+        "description": "'비 오는 날 모자를 쓰고 우산을 든 새끼 고양이'처럼 원하는 것을 자세히 설명하세요"
+      },
+      "age": {
+        "title": "적절한 연령 선택",
+        "description": "어린 아이들은 간단한 패턴이 필요하고, 나이가 많은 아이들은 복잡한 패턴을 다룰 수 있습니다"
+      },
+      "print": {
+        "title": "인쇄에 최적",
+        "description": "생성된 컬러링 페이지는 인쇄에 최적화되어 종이에서 더 나은 컬러링 경험을 제공합니다"
+      }
+    },
+    "quickPrompts": [
+      "귀여운 새끼 고양이",
+      "아름다운 공주",
+      "마법의 유니콘",
+      "예쁜 꽃들",
+      "멋진 스포츠카",
+      "생일 케이크"
+    ]
+  },
+  "common": {
+    "download": "다운로드",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "retry": "다시 시도",
+    "cancel": "취소",
+    "confirm": "확인",
+    "close": "닫기",
+    "save": "저장",
+    "edit": "편집",
+    "delete": "삭제",
+    "search": "검색",
+    "filter": "필터",
+    "sort": "정렬",
+    "previous": "이전",
+    "next": "다음"
+  }
+}

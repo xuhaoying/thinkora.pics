@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "home": "首页",
+    "generate": "创作",
+    "gallery": "图库",
+    "brandName": "智绘本",
+    "brandSubtitle": "AI涂色页生成器",
+    "startCreating": "开始创作"
+  },
+  "home": {
+    "hero": {
+      "title": "用AI创造神奇的",
+      "subtitle": "涂色页面",
+      "description": "将您的想象力转化为美丽、独特的涂色页面。安全、教育性强，为各个年龄段的儿童提供无限创意。",
+      "startCreating": "开始创作",
+      "viewGallery": "查看图库"
+    },
+    "features": {
+      "title": "为什么选择AI涂色本？",
+      "aiPowered": {
+        "title": "AI智能生成",
+        "description": "利用先进的AI技术即时创建独特的涂色页面。"
+      },
+      "highQuality": {
+        "title": "高质量下载",
+        "description": "下载清晰的打印就绪PDF，适合任何打印机。"
+      },
+      "childSafe": {
+        "title": "儿童安全内容",
+        "description": "所有内容都经过审核，专为儿童设计。"
+      },
+      "educational": {
+        "title": "教育价值",
+        "description": "通过涂色促进创造力、专注力和学习。"
+      }
+    },
+    "categories": {
+      "title": "热门分类",
+      "animals": "动物",
+      "fantasy": "魔法",
+      "nature": "自然",
+      "vehicles": "交通",
+      "holidays": "节日",
+      "educational": "学习",
+      "pagesCount": "页面"
+    },
+    "pricing": {
+      "title": "简单、公平的定价",
+      "payPerPage": {
+        "title": "按页付费",
+        "price": "¥3.5",
+        "description": "偶尔使用的完美选择",
+        "features": {
+          "highQuality": "高质量下载",
+          "instant": "即时生成",
+          "commercial": "允许商业使用"
+        },
+        "button": "开始使用"
+      },
+      "monthly": {
+        "title": "月度无限制",
+        "price": "¥68",
+        "description": "家庭使用的最佳价值",
+        "badge": "最受欢迎",
+        "features": {
+          "unlimited": "无限生成",
+          "priority": "优先处理",
+          "premium": "高级模板",
+          "sharing": "家庭共享"
+        },
+        "button": "开始免费试用"
+      }
+    }
+  },
+  "generate": {
+    "title": "AI智能涂色页生成器",
+    "subtitle": "告诉我你想画什么，AI会为你创造专属的涂色页！",
+    "form": {
+      "quickPrompts": "快速选择（点击直接使用）",
+      "promptLabel": "你想画什么？",
+      "promptPlaceholder": "例如：一只可爱的小猫在花园里玩耍...",
+      "promptRequired": "请描述你想要的涂色页内容",
+      "categoryLabel": "选择主题",
+      "categoryRequired": "请选择一个主题",
+      "ageLabel": "适合年龄",
+      "advancedToggle": "高级设置",
+      "styleLabel": "绘画风格（可选）",
+      "generateButton": "立即生成涂色页",
+      "generating": "AI正在创作中...",
+      "preview": "生成预览："
+    },
+    "categories": {
+      "animals": "动物",
+      "fantasy": "魔法",
+      "nature": "自然",
+      "vehicles": "交通",
+      "holidays": "节日",
+      "educational": "学习",
+      "examples": {
+        "animals": "小猫, 小狗, 兔子",
+        "fantasy": "独角兽, 公主, 城堡",
+        "nature": "花朵, 树木, 蝴蝶",
+        "vehicles": "汽车, 飞机, 火车",
+        "holidays": "圣诞树, 生日蛋糕",
+        "educational": "字母, 数字, 形状"
+      }
+    },
+    "ageGroups": {
+      "simple": {
+        "label": "3-6岁",
+        "description": "大图案，简单线条"
+      },
+      "medium": {
+        "label": "7-12岁",
+        "description": "适中细节，最受欢迎"
+      },
+      "complex": {
+        "label": "13岁+",
+        "description": "复杂图案，精细线条"
+      }
+    },
+    "styles": {
+      "cute": "可爱卡通（推荐）",
+      "simple": "简单线条",
+      "detailed": "精细写实",
+      "mandala": "曼陀罗图案",
+      "geometric": "几何图形"
+    },
+    "status": {
+      "aiEnabled": "AI生成已启用",
+      "aiEnabledDesc": "将使用真实的AI技术为您生成独特的涂色页",
+      "demoMode": "当前使用演示模式",
+      "demoModeDesc": "如需启用真正的AI生成，请在 .env 文件中配置 VITE_REPLICATE_API_KEY"
+    },
+    "result": {
+      "title": "你的专属涂色页",
+      "download": "下载图片",
+      "regenerate": "重新生成",
+      "generating": "生成中...",
+      "tip": "小贴士：建议使用A4纸张打印，调整打印机设置为\"黑白\"模式效果更佳！",
+      "placeholder": "你的涂色页将在这里显示",
+      "placeholderDesc": "填写左侧表单，点击生成按钮开始创作",
+      "features": "高清画质 • 打印友好 • 安全内容"
+    },
+    "aiStatus": {
+      "creating": "AI智能创作中...",
+      "generatingPage": "正在为您生成专属涂色页",
+      "estimatedTime": "预计需要 30-120 秒，请耐心等待",
+      "analyzing": "正在分析您的描述...",
+      "matching": "正在匹配最佳风格...",
+      "generating": "正在生成高清图像..."
+    },
+    "tips": {
+      "title": "使用小贴士",
+      "specific": {
+        "title": "描述要具体",
+        "description": "详细描述你想要的内容，比如\"一只戴帽子的小猫在下雨天打伞\""
+      },
+      "age": {
+        "title": "选择合适年龄",
+        "description": "年龄小的孩子适合简单图案，年龄大的可以选择复杂图案"
+      },
+      "print": {
+        "title": "打印效果最佳",
+        "description": "生成的涂色页专为打印优化，在纸上涂色体验更好"
+      }
+    },
+    "quickPrompts": [
+      "可爱的小猫咪",
+      "美丽的公主",
+      "神奇的独角兽",
+      "漂亮的花朵",
+      "酷炫的跑车",
+      "生日蛋糕"
+    ]
+  },
+  "common": {
+    "download": "下载",
+    "loading": "加载中...",
+    "error": "错误",
+    "retry": "重试",
+    "cancel": "取消",
+    "confirm": "确认",
+    "close": "关闭",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "previous": "上一页",
+    "next": "下一页"
+  }
+}

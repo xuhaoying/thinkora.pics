@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "home": "Home",
+    "generate": "Create",
+    "gallery": "Gallery",
+    "brandName": "AI Coloring Book",
+    "brandSubtitle": "AI Coloring Page Generator",
+    "startCreating": "Start Creating"
+  },
+  "home": {
+    "hero": {
+      "title": "Create Magic with",
+      "subtitle": "AI Coloring Pages",
+      "description": "Transform your imagination into beautiful, unique coloring pages. Safe, educational, and endlessly creative for children of all ages.",
+      "startCreating": "Start Creating",
+      "viewGallery": "View Gallery"
+    },
+    "features": {
+      "title": "Why Choose AI Coloring Book?",
+      "aiPowered": {
+        "title": "AI-Powered Generation",
+        "description": "Create unique coloring pages instantly with advanced AI technology."
+      },
+      "highQuality": {
+        "title": "High-Quality Downloads",
+        "description": "Download crisp, print-ready PDFs perfect for any printer."
+      },
+      "childSafe": {
+        "title": "Child-Safe Content",
+        "description": "All content is moderated and designed specifically for children."
+      },
+      "educational": {
+        "title": "Educational Value",
+        "description": "Promote creativity, focus, and learning through coloring."
+      }
+    },
+    "categories": {
+      "title": "Popular Categories",
+      "animals": "Animals",
+      "fantasy": "Fantasy",
+      "nature": "Nature",
+      "vehicles": "Vehicles",
+      "holidays": "Holidays",
+      "educational": "Educational",
+      "pagesCount": "pages"
+    },
+    "pricing": {
+      "title": "Simple, Fair Pricing",
+      "payPerPage": {
+        "title": "Pay Per Page",
+        "price": "$0.50",
+        "description": "Perfect for occasional use",
+        "features": {
+          "highQuality": "High-quality downloads",
+          "instant": "Instant generation",
+          "commercial": "Commercial use allowed"
+        },
+        "button": "Get Started"
+      },
+      "monthly": {
+        "title": "Monthly Unlimited",
+        "price": "$9.90",
+        "description": "Best value for families",
+        "badge": "Most Popular",
+        "features": {
+          "unlimited": "Unlimited generations",
+          "priority": "Priority processing",
+          "premium": "Premium templates",
+          "sharing": "Family sharing"
+        },
+        "button": "Start Free Trial"
+      }
+    }
+  },
+  "generate": {
+    "title": "AI Smart Coloring Page Generator",
+    "subtitle": "Tell me what you want to draw, and AI will create a unique coloring page for you!",
+    "form": {
+      "quickPrompts": "Quick Select (click to use)",
+      "promptLabel": "What do you want to draw?",
+      "promptPlaceholder": "For example: A cute kitten playing in a garden...",
+      "promptRequired": "Please describe the content you want for the coloring page",
+      "categoryLabel": "Choose Theme",
+      "categoryRequired": "Please select a theme",
+      "ageLabel": "Suitable Age",
+      "advancedToggle": "Advanced Settings",
+      "styleLabel": "Drawing Style (optional)",
+      "generateButton": "Generate Coloring Page",
+      "generating": "AI is creating...",
+      "preview": "Generation Preview:"
+    },
+    "categories": {
+      "animals": "Animals",
+      "fantasy": "Magic",
+      "nature": "Nature",
+      "vehicles": "Transport",
+      "holidays": "Holidays",
+      "educational": "Learning",
+      "examples": {
+        "animals": "cat, dog, rabbit",
+        "fantasy": "unicorn, princess, castle",
+        "nature": "flowers, trees, butterfly",
+        "vehicles": "car, plane, train",
+        "holidays": "Christmas tree, birthday cake",
+        "educational": "letters, numbers, shapes"
+      }
+    },
+    "ageGroups": {
+      "simple": {
+        "label": "3-6 years",
+        "description": "Large patterns, simple lines"
+      },
+      "medium": {
+        "label": "7-12 years",
+        "description": "Medium details, most popular"
+      },
+      "complex": {
+        "label": "13+ years",
+        "description": "Complex patterns, fine lines"
+      }
+    },
+    "styles": {
+      "cute": "Cute Cartoon (Recommended)",
+      "simple": "Simple Lines",
+      "detailed": "Detailed Realistic",
+      "mandala": "Mandala Pattern",
+      "geometric": "Geometric Shapes"
+    },
+    "status": {
+      "aiEnabled": "AI Generation Enabled",
+      "aiEnabledDesc": "Will use real AI technology to generate unique coloring pages for you",
+      "demoMode": "Currently using demo mode",
+      "demoModeDesc": "To enable real AI generation, configure VITE_REPLICATE_API_KEY in .env file"
+    },
+    "result": {
+      "title": "Your Exclusive Coloring Page",
+      "download": "Download Image",
+      "regenerate": "Regenerate",
+      "generating": "Generating...",
+      "tip": "Tip: Recommend using A4 paper for printing, set printer to 'black and white' mode for best results!",
+      "placeholder": "Your coloring page will appear here",
+      "placeholderDesc": "Fill out the form on the left and click generate to start creating",
+      "features": "High-definition quality • Print-friendly • Safe content"
+    },
+    "aiStatus": {
+      "creating": "AI Smart Creation...",
+      "generatingPage": "Generating your exclusive coloring page",
+      "estimatedTime": "Estimated time: 30-120 seconds, please wait patiently",
+      "analyzing": "Analyzing your description...",
+      "matching": "Matching the best style...",
+      "generating": "Generating high-definition image..."
+    },
+    "tips": {
+      "title": "Usage Tips",
+      "specific": {
+        "title": "Be Specific",
+        "description": "Describe in detail what you want, like 'a kitten wearing a hat with an umbrella in the rain'"
+      },
+      "age": {
+        "title": "Choose Right Age",
+        "description": "Younger children need simple patterns, older children can handle complex patterns"
+      },
+      "print": {
+        "title": "Best for Printing",
+        "description": "Generated coloring pages are optimized for printing, better experience on paper"
+      }
+    },
+    "quickPrompts": [
+      "Cute kitten",
+      "Beautiful princess",
+      "Magical unicorn",
+      "Pretty flowers",
+      "Cool sports car",
+      "Birthday cake"
+    ]
+  },
+  "common": {
+    "download": "Download",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "previous": "Previous",
+    "next": "Next"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "generate": "Créer",
+    "gallery": "Galerie",
+    "brandName": "Livre de Coloriage IA",
+    "brandSubtitle": "Générateur de Pages de Coloriage IA",
+    "startCreating": "Commencer à Créer"
+  },
+  "home": {
+    "hero": {
+      "title": "Créez de la Magie avec",
+      "subtitle": "Pages de Coloriage IA",
+      "description": "Transformez votre imagination en belles pages de coloriage uniques. Sûr, éducatif et infiniment créatif pour les enfants de tous âges.",
+      "startCreating": "Commencer à Créer",
+      "viewGallery": "Voir la Galerie"
+    },
+    "features": {
+      "title": "Pourquoi choisir le Livre de Coloriage IA ?",
+      "aiPowered": {
+        "title": "Génération par IA",
+        "description": "Créez des pages de coloriage uniques instantanément avec une technologie IA avancée."
+      },
+      "highQuality": {
+        "title": "Téléchargements Haute Qualité",
+        "description": "Téléchargez des PDF nets prêts à imprimer, parfaits pour toute imprimante."
+      },
+      "childSafe": {
+        "title": "Contenu Sûr pour Enfants",
+        "description": "Tout le contenu est modéré et conçu spécifiquement pour les enfants."
+      },
+      "educational": {
+        "title": "Valeur Éducative",
+        "description": "Favorise la créativité, la concentration et l'apprentissage par le coloriage."
+      }
+    },
+    "categories": {
+      "title": "Catégories Populaires",
+      "animals": "Animaux",
+      "fantasy": "Fantaisie",
+      "nature": "Nature",
+      "vehicles": "Véhicules",
+      "holidays": "Fêtes",
+      "educational": "Éducatif",
+      "pagesCount": "pages"
+    },
+    "pricing": {
+      "title": "Prix Simples et Équitables",
+      "payPerPage": {
+        "title": "Paiement par Page",
+        "price": "0,50€",
+        "description": "Parfait pour une utilisation occasionnelle",
+        "features": {
+          "highQuality": "Téléchargements haute qualité",
+          "instant": "Génération instantanée",
+          "commercial": "Usage commercial autorisé"
+        },
+        "button": "Commencer"
+      },
+      "monthly": {
+        "title": "Mensuel Illimité",
+        "price": "8,90€",
+        "description": "Meilleure valeur pour les familles",
+        "badge": "Plus Populaire",
+        "features": {
+          "unlimited": "Générations illimitées",
+          "priority": "Traitement prioritaire",
+          "premium": "Modèles premium",
+          "sharing": "Partage familial"
+        },
+        "button": "Commencer l'Essai Gratuit"
+      }
+    }
+  },
+  "generate": {
+    "title": "Générateur Intelligent de Pages de Coloriage IA",
+    "subtitle": "Dites-moi ce que vous voulez dessiner, et l'IA créera une page de coloriage unique pour vous !",
+    "form": {
+      "quickPrompts": "Sélection Rapide (cliquez pour utiliser)",
+      "promptLabel": "Que voulez-vous dessiner ?",
+      "promptPlaceholder": "Par exemple : Un chaton mignon jouant dans un jardin...",
+      "promptRequired": "Veuillez décrire le contenu que vous voulez pour la page de coloriage",
+      "categoryLabel": "Choisir le Thème",
+      "categoryRequired": "Veuillez sélectionner un thème",
+      "ageLabel": "Âge Approprié",
+      "advancedToggle": "Paramètres Avancés",
+      "styleLabel": "Style de Dessin (optionnel)",
+      "generateButton": "Générer Page de Coloriage",
+      "generating": "L'IA crée...",
+      "preview": "Aperçu de Génération :"
+    },
+    "categories": {
+      "animals": "Animaux",
+      "fantasy": "Magie",
+      "nature": "Nature",
+      "vehicles": "Transport",
+      "holidays": "Fêtes",
+      "educational": "Apprentissage",
+      "examples": {
+        "animals": "chat, chien, lapin",
+        "fantasy": "licorne, princesse, château",
+        "nature": "fleurs, arbres, papillon",
+        "vehicles": "voiture, avion, train",
+        "holidays": "sapin de noël, gâteau d'anniversaire",
+        "educational": "lettres, chiffres, formes"
+      }
+    },
+    "ageGroups": {
+      "simple": {
+        "label": "3-6 ans",
+        "description": "Grands motifs, lignes simples"
+      },
+      "medium": {
+        "label": "7-12 ans",
+        "description": "Détails moyens, plus populaire"
+      },
+      "complex": {
+        "label": "13+ ans",
+        "description": "Motifs complexes, lignes fines"
+      }
+    },
+    "styles": {
+      "cute": "Dessin Animé Mignon (Recommandé)",
+      "simple": "Lignes Simples",
+      "detailed": "Réaliste Détaillé",
+      "mandala": "Motif Mandala",
+      "geometric": "Formes Géométriques"
+    },
+    "status": {
+      "aiEnabled": "Génération IA Activée",
+      "aiEnabledDesc": "Utilisera une vraie technologie IA pour générer des pages de coloriage uniques pour vous",
+      "demoMode": "Actuellement en mode démo",
+      "demoModeDesc": "Pour activer la vraie génération IA, configurez VITE_REPLICATE_API_KEY dans le fichier .env"
+    },
+    "result": {
+      "title": "Votre Page de Coloriage Exclusive",
+      "download": "Télécharger l'Image",
+      "regenerate": "Régénérer",
+      "generating": "Génération...",
+      "tip": "Conseil : Recommandons d'utiliser du papier A4 pour l'impression, réglez l'imprimante en mode 'noir et blanc' pour de meilleurs résultats !",
+      "placeholder": "Votre page de coloriage apparaîtra ici",
+      "placeholderDesc": "Remplissez le formulaire à gauche et cliquez sur générer pour commencer à créer",
+      "features": "Qualité haute définition • Adapté à l'impression • Contenu sûr"
+    },
+    "aiStatus": {
+      "creating": "Création Intelligente IA...",
+      "generatingPage": "Génération de votre page de coloriage exclusive",
+      "estimatedTime": "Temps estimé : 30-120 secondes, veuillez patienter",
+      "analyzing": "Analyse de votre description...",
+      "matching": "Correspondance du meilleur style...",
+      "generating": "Génération d'image haute définition..."
+    },
+    "tips": {
+      "title": "Conseils d'Utilisation",
+      "specific": {
+        "title": "Soyez Spécifique",
+        "description": "Décrivez en détail ce que vous voulez, comme 'un chaton avec un chapeau tenant un parapluie sous la pluie'"
+      },
+      "age": {
+        "title": "Choisissez le Bon Âge",
+        "description": "Les jeunes enfants ont besoin de motifs simples, les enfants plus âgés peuvent gérer des motifs complexes"
+      },
+      "print": {
+        "title": "Meilleur pour l'Impression",
+        "description": "Les pages de coloriage générées sont optimisées pour l'impression, meilleure expérience sur papier"
+      }
+    },
+    "quickPrompts": [
+      "Chaton mignon",
+      "Belle princesse",
+      "Licorne magique",
+      "Jolies fleurs",
+      "Voiture de sport cool",
+      "Gâteau d'anniversaire"
+    ]
+  },
+  "common": {
+    "download": "Télécharger",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "close": "Fermer",
+    "save": "Sauvegarder",
+    "edit": "Éditer",
+    "delete": "Supprimer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "previous": "Précédent",
+    "next": "Suivant"
+  }
+}

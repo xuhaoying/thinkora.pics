@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "generate": "Crear",
+    "gallery": "Galería",
+    "brandName": "Libro de Colorear IA",
+    "brandSubtitle": "Generador de Páginas para Colorear IA",
+    "startCreating": "Comenzar a Crear"
+  },
+  "home": {
+    "hero": {
+      "title": "Crea Magia con",
+      "subtitle": "Páginas para Colorear IA",
+      "description": "Transforma tu imaginación en hermosas páginas para colorear únicas. Seguro, educativo e infinitamente creativo para niños de todas las edades.",
+      "startCreating": "Comenzar a Crear",
+      "viewGallery": "Ver Galería"
+    },
+    "features": {
+      "title": "¿Por qué elegir Libro de Colorear IA?",
+      "aiPowered": {
+        "title": "Generación con IA",
+        "description": "Crea páginas para colorear únicas al instante con tecnología IA avanzada."
+      },
+      "highQuality": {
+        "title": "Descargas de Alta Calidad",
+        "description": "Descarga PDFs nítidos listos para imprimir, perfectos para cualquier impresora."
+      },
+      "childSafe": {
+        "title": "Contenido Seguro para Niños",
+        "description": "Todo el contenido está moderado y diseñado específicamente para niños."
+      },
+      "educational": {
+        "title": "Valor Educativo",
+        "description": "Promueve la creatividad, concentración y aprendizaje a través del coloreado."
+      }
+    },
+    "categories": {
+      "title": "Categorías Populares",
+      "animals": "Animales",
+      "fantasy": "Fantasía",
+      "nature": "Naturaleza",
+      "vehicles": "Vehículos",
+      "holidays": "Fiestas",
+      "educational": "Educativo",
+      "pagesCount": "páginas"
+    },
+    "pricing": {
+      "title": "Precios Simples y Justos",
+      "payPerPage": {
+        "title": "Pago por Página",
+        "price": "$0.50",
+        "description": "Perfecto para uso ocasional",
+        "features": {
+          "highQuality": "Descargas de alta calidad",
+          "instant": "Generación instantánea",
+          "commercial": "Uso comercial permitido"
+        },
+        "button": "Comenzar"
+      },
+      "monthly": {
+        "title": "Mensual Ilimitado",
+        "price": "$9.90",
+        "description": "Mejor valor para familias",
+        "badge": "Más Popular",
+        "features": {
+          "unlimited": "Generaciones ilimitadas",
+          "priority": "Procesamiento prioritario",
+          "premium": "Plantillas premium",
+          "sharing": "Compartir en familia"
+        },
+        "button": "Comenzar Prueba Gratuita"
+      }
+    }
+  },
+  "generate": {
+    "title": "Generador Inteligente de Páginas para Colorear IA",
+    "subtitle": "¡Dime qué quieres dibujar y la IA creará una página para colorear única para ti!",
+    "form": {
+      "quickPrompts": "Selección Rápida (haz clic para usar)",
+      "promptLabel": "¿Qué quieres dibujar?",
+      "promptPlaceholder": "Por ejemplo: Un gatito lindo jugando en un jardín...",
+      "promptRequired": "Por favor describe el contenido que quieres para la página para colorear",
+      "categoryLabel": "Elegir Tema",
+      "categoryRequired": "Por favor selecciona un tema",
+      "ageLabel": "Edad Adecuada",
+      "advancedToggle": "Configuración Avanzada",
+      "styleLabel": "Estilo de Dibujo (opcional)",
+      "generateButton": "Generar Página para Colorear",
+      "generating": "La IA está creando...",
+      "preview": "Vista Previa de Generación:"
+    },
+    "categories": {
+      "animals": "Animales",
+      "fantasy": "Magia",
+      "nature": "Naturaleza",
+      "vehicles": "Transporte",
+      "holidays": "Fiestas",
+      "educational": "Aprendizaje",
+      "examples": {
+        "animals": "gato, perro, conejo",
+        "fantasy": "unicornio, princesa, castillo",
+        "nature": "flores, árboles, mariposa",
+        "vehicles": "coche, avión, tren",
+        "holidays": "árbol de navidad, pastel de cumpleaños",
+        "educational": "letras, números, formas"
+      }
+    },
+    "ageGroups": {
+      "simple": {
+        "label": "3-6 años",
+        "description": "Patrones grandes, líneas simples"
+      },
+      "medium": {
+        "label": "7-12 años",
+        "description": "Detalles medios, más popular"
+      },
+      "complex": {
+        "label": "13+ años",
+        "description": "Patrones complejos, líneas finas"
+      }
+    },
+    "styles": {
+      "cute": "Dibujos Animados Lindos (Recomendado)",
+      "simple": "Líneas Simples",
+      "detailed": "Realista Detallado",
+      "mandala": "Patrón Mandala",
+      "geometric": "Formas Geométricas"
+    },
+    "status": {
+      "aiEnabled": "Generación IA Habilitada",
+      "aiEnabledDesc": "Usará tecnología IA real para generar páginas para colorear únicas para ti",
+      "demoMode": "Actualmente usando modo demo",
+      "demoModeDesc": "Para habilitar generación IA real, configura VITE_REPLICATE_API_KEY en archivo .env"
+    },
+    "result": {
+      "title": "Tu Página para Colorear Exclusiva",
+      "download": "Descargar Imagen",
+      "regenerate": "Regenerar",
+      "generating": "Generando...",
+      "tip": "¡Consejo: Recomendamos usar papel A4 para imprimir, configura la impresora en modo 'blanco y negro' para mejores resultados!",
+      "placeholder": "Tu página para colorear aparecerá aquí",
+      "placeholderDesc": "Completa el formulario de la izquierda y haz clic en generar para comenzar a crear",
+      "features": "Calidad de alta definición • Amigable para imprimir • Contenido seguro"
+    },
+    "aiStatus": {
+      "creating": "Creación Inteligente IA...",
+      "generatingPage": "Generando tu página para colorear exclusiva",
+      "estimatedTime": "Tiempo estimado: 30-120 segundos, por favor espera pacientemente",
+      "analyzing": "Analizando tu descripción...",
+      "matching": "Emparejando el mejor estilo...",
+      "generating": "Generando imagen de alta definición..."
+    },
+    "tips": {
+      "title": "Consejos de Uso",
+      "specific": {
+        "title": "Sé Específico",
+        "description": "Describe en detalle lo que quieres, como 'un gatito con sombrero con paraguas bajo la lluvia'"
+      },
+      "age": {
+        "title": "Elige la Edad Correcta",
+        "description": "Los niños más pequeños necesitan patrones simples, los niños mayores pueden manejar patrones complejos"
+      },
+      "print": {
+        "title": "Mejor para Imprimir",
+        "description": "Las páginas para colorear generadas están optimizadas para imprimir, mejor experiencia en papel"
+      }
+    },
+    "quickPrompts": [
+      "Gatito lindo",
+      "Princesa hermosa",
+      "Unicornio mágico",
+      "Flores bonitas",
+      "Carro deportivo genial",
+      "Pastel de cumpleaños"
+    ]
+  },
+  "common": {
+    "download": "Descargar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  }
+}

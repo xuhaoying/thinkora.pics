@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "generate": "Erstellen",
+    "gallery": "Galerie",
+    "brandName": "KI-Malbuch",
+    "brandSubtitle": "KI-Malseiten-Generator",
+    "startCreating": "Erstellen beginnen"
+  },
+  "home": {
+    "hero": {
+      "title": "Schaffe Magie mit",
+      "subtitle": "KI-Malseiten",
+      "description": "Verwandle deine Fantasie in wunderschöne, einzigartige Malseiten. Sicher, lehrreich und endlos kreativ für Kinder jeden Alters.",
+      "startCreating": "Erstellen beginnen",
+      "viewGallery": "Galerie ansehen"
+    },
+    "features": {
+      "title": "Warum KI-Malbuch wählen?",
+      "aiPowered": {
+        "title": "KI-gestützte Generierung",
+        "description": "Erstelle sofort einzigartige Malseiten mit fortschrittlicher KI-Technologie."
+      },
+      "highQuality": {
+        "title": "Hochwertige Downloads",
+        "description": "Lade gestochen scharfe, druckfertige PDFs herunter, perfekt für jeden Drucker."
+      },
+      "childSafe": {
+        "title": "Kinderfreundlicher Inhalt",
+        "description": "Alle Inhalte sind moderiert und speziell für Kinder entwickelt."
+      },
+      "educational": {
+        "title": "Bildungswert",
+        "description": "Fördere Kreativität, Konzentration und Lernen durch Malen."
+      }
+    },
+    "categories": {
+      "title": "Beliebte Kategorien",
+      "animals": "Tiere",
+      "fantasy": "Fantasy",
+      "nature": "Natur",
+      "vehicles": "Fahrzeuge",
+      "holidays": "Feiertage",
+      "educational": "Bildung",
+      "pagesCount": "Seiten"
+    },
+    "pricing": {
+      "title": "Einfache, faire Preise",
+      "payPerPage": {
+        "title": "Pro Seite bezahlen",
+        "price": "0,50€",
+        "description": "Perfekt für gelegentliche Nutzung",
+        "features": {
+          "highQuality": "Hochwertige Downloads",
+          "instant": "Sofortige Generierung",
+          "commercial": "Kommerzielle Nutzung erlaubt"
+        },
+        "button": "Loslegen"
+      },
+      "monthly": {
+        "title": "Monatlich Unbegrenzt",
+        "price": "8,90€",
+        "description": "Bester Wert für Familien",
+        "badge": "Am beliebtesten",
+        "features": {
+          "unlimited": "Unbegrenzte Generierungen",
+          "priority": "Prioritäre Bearbeitung",
+          "premium": "Premium-Vorlagen",
+          "sharing": "Familien-Sharing"
+        },
+        "button": "Kostenlose Testversion starten"
+      }
+    }
+  },
+  "generate": {
+    "title": "Intelligenter KI-Malseiten-Generator",
+    "subtitle": "Sag mir, was du malen möchtest, und die KI erstellt eine einzigartige Malseite für dich!",
+    "form": {
+      "quickPrompts": "Schnellauswahl (klicken zum verwenden)",
+      "promptLabel": "Was möchtest du malen?",
+      "promptPlaceholder": "Zum Beispiel: Ein süßes Kätzchen, das in einem Garten spielt...",
+      "promptRequired": "Bitte beschreibe den Inhalt, den du für die Malseite möchtest",
+      "categoryLabel": "Thema wählen",
+      "categoryRequired": "Bitte wähle ein Thema",
+      "ageLabel": "Geeignetes Alter",
+      "advancedToggle": "Erweiterte Einstellungen",
+      "styleLabel": "Zeichenstil (optional)",
+      "generateButton": "Malseite generieren",
+      "generating": "KI erstellt...",
+      "preview": "Generierungs-Vorschau:"
+    },
+    "categories": {
+      "animals": "Tiere",
+      "fantasy": "Magie",
+      "nature": "Natur",
+      "vehicles": "Transport",
+      "holidays": "Feiertage",
+      "educational": "Lernen",
+      "examples": {
+        "animals": "Katze, Hund, Hase",
+        "fantasy": "Einhorn, Prinzessin, Schloss",
+        "nature": "Blumen, Bäume, Schmetterling",
+        "vehicles": "Auto, Flugzeug, Zug",
+        "holidays": "Weihnachtsbaum, Geburtstagskuchen",
+        "educational": "Buchstaben, Zahlen, Formen"
+      }
+    },
+    "ageGroups": {
+      "simple": {
+        "label": "3-6 Jahre",
+        "description": "Große Muster, einfache Linien"
+      },
+      "medium": {
+        "label": "7-12 Jahre",
+        "description": "Mittlere Details, am beliebtesten"
+      },
+      "complex": {
+        "label": "13+ Jahre",
+        "description": "Komplexe Muster, feine Linien"
+      }
+    },
+    "styles": {
+      "cute": "Süße Cartoon (Empfohlen)",
+      "simple": "Einfache Linien",
+      "detailed": "Detailliert Realistisch",
+      "mandala": "Mandala-Muster",
+      "geometric": "Geometrische Formen"
+    },
+    "status": {
+      "aiEnabled": "KI-Generierung aktiviert",
+      "aiEnabledDesc": "Wird echte KI-Technologie verwenden, um einzigartige Malseiten für dich zu generieren",
+      "demoMode": "Derzeit Demo-Modus verwendet",
+      "demoModeDesc": "Um echte KI-Generierung zu aktivieren, konfiguriere VITE_REPLICATE_API_KEY in .env-Datei"
+    },
+    "result": {
+      "title": "Deine exklusive Malseite",
+      "download": "Bild herunterladen",
+      "regenerate": "Neu generieren",
+      "generating": "Generiere...",
+      "tip": "Tipp: Empfehlen A4-Papier zum Drucken, stelle den Drucker auf 'Schwarz-Weiß'-Modus für beste Ergebnisse!",
+      "placeholder": "Deine Malseite wird hier erscheinen",
+      "placeholderDesc": "Fülle das Formular links aus und klicke auf generieren, um zu beginnen",
+      "features": "Hochauflösende Qualität • Druckfreundlich • Sicherer Inhalt"
+    },
+    "aiStatus": {
+      "creating": "Intelligente KI-Erstellung...",
+      "generatingPage": "Generiere deine exklusive Malseite",
+      "estimatedTime": "Geschätzte Zeit: 30-120 Sekunden, bitte geduldig warten",
+      "analyzing": "Analysiere deine Beschreibung...",
+      "matching": "Finde den besten Stil...",
+      "generating": "Generiere hochauflösendes Bild..."
+    },
+    "tips": {
+      "title": "Nutzungstipps",
+      "specific": {
+        "title": "Sei spezifisch",
+        "description": "Beschreibe detailliert, was du willst, wie 'ein Kätzchen mit Hut hält einen Regenschirm im Regen'"
+      },
+      "age": {
+        "title": "Wähle das richtige Alter",
+        "description": "Jüngere Kinder brauchen einfache Muster, ältere Kinder können komplexe Muster bewältigen"
+      },
+      "print": {
+        "title": "Am besten zum Drucken",
+        "description": "Generierte Malseiten sind für das Drucken optimiert, bessere Erfahrung auf Papier"
+      }
+    },
+    "quickPrompts": [
+      "Süßes Kätzchen",
+      "Schöne Prinzessin",
+      "Magisches Einhorn",
+      "Hübsche Blumen",
+      "Cooler Sportwagen",
+      "Geburtstagskuchen"
+    ]
+  },
+  "common": {
+    "download": "Herunterladen",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "retry": "Wiederholen",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "close": "Schließen",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "sort": "Sortieren",
+    "previous": "Vorherige",
+    "next": "Nächste"
+  }
+}
