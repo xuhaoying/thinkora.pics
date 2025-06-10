@@ -47,9 +47,22 @@ const Home = () => {
             {t('home.hero.title')}
             <span className="text-purple-600 block">{t('home.hero.subtitle')}</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
             {t('home.hero.description')}
           </p>
+          <div className="bg-white/90 backdrop-blur rounded-lg p-4 max-w-2xl mx-auto mb-8 border border-purple-100">
+            <p className="text-sm text-gray-700 leading-relaxed">
+              <strong>Digital Product Service:</strong> Our AI-powered platform generates high-quality, printable coloring pages 
+              on-demand. Perfect for parents, teachers, and educators seeking unique, safe content for children aged 3-13+. 
+              All content is automatically moderated for appropriateness and optimized for home printing.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2 justify-center">
+              <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Educational Content</span>
+              <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Child-Safe AI</span>
+              <span className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Print-Ready Quality</span>
+              <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded">Instant Download</span>
+            </div>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/generate"
@@ -64,6 +77,23 @@ const Home = () => {
             >
               {t('home.hero.viewGallery')}
             </Link>
+            <a
+              href="#pricing"
+              className="bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+            >
+              <span>💰</span>
+              <span>View Pricing</span>
+            </a>
+          </div>
+          
+          {/* Pricing Highlight */}
+          <div className="mt-8 bg-white/80 backdrop-blur rounded-xl p-4 max-w-md mx-auto border border-purple-200">
+            <p className="text-sm text-gray-600 mb-2">💸 <strong>Transparent Pricing</strong></p>
+            <div className="flex justify-between items-center text-sm">
+              <span>Pay-per-page: <strong>$0.50</strong></span>
+              <span className="text-purple-600">•</span>
+              <span>Monthly: <strong>$9.90</strong></span>
+            </div>
           </div>
         </div>
       </section>
@@ -111,7 +141,7 @@ const Home = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 px-4">
+      <section id="pricing" className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">{t('home.pricing.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
