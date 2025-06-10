@@ -44,9 +44,9 @@ function App() {
     <ThemeProvider>
       <ColoringBookProvider>
         <Router>
-          <div className="min-h-screen bg-premium transition-colors duration-300">
+          <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
             <Header />
-            <main className="pt-18">
+            <main className="pt-20">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/generate" element={<SimpleGenerate />} />
