@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { ColoringBookProvider } from './context/ColoringBookContext';
+import { ThemeProvider } from './components/ThemeProvider';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Home from './pages/Home';
@@ -40,24 +41,26 @@ const SimpleGenerate = () => (
 
 function App() {
   return (
-    <ColoringBookProvider>
-      <Router>
-        <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/generate" element={<SimpleGenerate />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
-              <Route path="/terms" element={<TermsOfService />} />
-            </Routes>
-          </main>
-          <Footer />
-          <Analytics />
-        </div>
-      </Router>
-    </ColoringBookProvider>
+    <ThemeProvider>
+      <ColoringBookProvider>
+        <Router>
+          <div className="min-h-screen bg-premium transition-colors duration-300">
+            <Header />
+            <main className="pt-18">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/generate" element={<SimpleGenerate />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsOfService />} />
+              </Routes>
+            </main>
+            <Footer />
+            <Analytics />
+          </div>
+        </Router>
+      </ColoringBookProvider>
+    </ThemeProvider>
   );
 }
 

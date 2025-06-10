@@ -230,8 +230,8 @@ class AIService {
       || this.createDefaultSVG();
 
     // Only use safe ASCII characters for the text
-    const safePrompt = request.prompt.replace(/[^\x00-\x7F]/g, "?"); // Replace non-ASCII with ?
-    const safeCategory = request.category.replace(/[^\x00-\x7F]/g, "?");
+    const safePrompt = request.prompt.replace(/[^\x20-\x7E]/g, "?"); // Replace non-ASCII with ?
+    const safeCategory = request.category.replace(/[^\x20-\x7E]/g, "?");
 
     const svg = `
       <svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">

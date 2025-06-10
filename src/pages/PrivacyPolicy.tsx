@@ -1,8 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 const PrivacyPolicy = () => {
-  const { t } = useTranslation();
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
