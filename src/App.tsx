@@ -5,10 +5,38 @@ import { ColoringBookProvider } from './context/ColoringBookContext';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Home from './pages/Home';
-import Generate from './pages/Generate';
 import Gallery from './pages/Gallery';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+
+// Simplified Generate component to avoid complex dependencies
+const SimpleGenerate = () => (
+  <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="text-center mb-8">
+      <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        🎨 AI Smart Coloring Page Generator
+      </h1>
+      <p className="text-lg text-gray-600">
+        Tell me what you want to draw, and AI will create a unique coloring page for you!
+      </p>
+    </div>
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+      <h2 className="text-xl font-semibold mb-4">Coming Soon</h2>
+      <p className="text-gray-600">
+        The AI generation feature is being prepared. Please check back soon!
+      </p>
+      <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+        <h3 className="font-semibold text-blue-900 mb-2">Features</h3>
+        <ul className="text-sm text-blue-700 space-y-1">
+          <li>• AI-powered coloring page generation</li>
+          <li>• Multiple age groups (3-6, 7-12, 13+ years)</li>
+          <li>• Various categories (animals, fantasy, nature, vehicles)</li>
+          <li>• High-quality, print-ready downloads</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+);
 
 function App() {
   return (
@@ -16,10 +44,10 @@ function App() {
       <Router>
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
           <Header />
-          <main className="min-h-screen">
+          <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/generate" element={<Generate />} />
+              <Route path="/generate" element={<SimpleGenerate />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
