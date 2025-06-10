@@ -7,6 +7,7 @@ import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Home from './pages/Home';
 import Gallery from './pages/Gallery';
+import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 
@@ -51,6 +52,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/generate" element={<SimpleGenerate />} />
                 <Route path="/gallery" element={<Gallery />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
               </Routes>

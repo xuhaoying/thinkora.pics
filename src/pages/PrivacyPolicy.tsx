@@ -1,158 +1,289 @@
 import React from 'react';
+import { Shield, Lock, Cookie, Database, Clock, Globe, Mail, FileText } from 'lucide-react';
 
 const PrivacyPolicy = () => {
+  const dataRetentionPeriods = [
+    {
+      category: "Account Information",
+      period: "Until account deletion",
+      description: "Kept as long as your account is active"
+    },
+    {
+      category: "Generated Content",
+      period: "30 days",
+      description: "Temporarily stored for service improvement"
+    },
+    {
+      category: "Usage Analytics",
+      period: "12 months",
+      description: "Anonymized after 3 months"
+    },
+    {
+      category: "Payment Information",
+      period: "7 years",
+      description: "Required for tax and legal compliance"
+    }
+  ];
+
+  const cookieTypes = [
+    {
+      type: "Essential",
+      purpose: "Required for basic website functionality",
+      duration: "Session",
+      examples: ["Authentication", "Security", "Basic preferences"]
+    },
+    {
+      type: "Analytics",
+      purpose: "Help us understand how visitors use our site",
+      duration: "2 years",
+      examples: ["Page views", "Feature usage", "Performance metrics"]
+    },
+    {
+      type: "Preferences",
+      purpose: "Remember your settings and preferences",
+      duration: "1 year",
+      examples: ["Language", "Theme", "Content filters"]
+    }
+  ];
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
+      <div className="bg-white dark:bg-surface-800 rounded-xl shadow-sm border border-gray-200 dark:border-surface-700 p-8">
+        <div className="text-center mb-8">
+          <div className="text-4xl mb-4">🔒</div>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Privacy Policy</h1>
+          <p className="text-gray-600 dark:text-gray-300">
+            Your privacy and your child's safety are our top priorities
+          </p>
+        </div>
         
-        <div className="prose prose-gray max-w-none">
-          <p className="text-sm text-gray-600 mb-6">
-            <strong>Effective Date:</strong> {new Date().toLocaleDateString()}
+        <div className="prose prose-gray max-w-none dark:prose-invert">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 p-4 bg-gray-50 dark:bg-surface-900 rounded-lg">
+            <strong>Effective Date:</strong> {new Date().toLocaleDateString()} | 
+            <strong> Last Updated:</strong> {new Date().toLocaleDateString()}
           </p>
 
+          <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-8">
+            <h2 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-3 flex items-center gap-2">
+              <Shield className="h-5 w-5" /> Child Safety Promise
+            </h2>
+            <p className="text-blue-800 dark:text-blue-200">
+              Thinkora.pics is designed for adults (parents, teachers, caregivers) to create content for children. 
+              We do not collect any personal information from children under 13, and all our content is thoroughly 
+              moderated to ensure child safety and appropriateness.
+            </p>
+          </div>
+
           <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">1. Information We Collect</h2>
-            <div className="space-y-4 text-gray-700">
-              <div>
-                <h3 className="font-medium text-gray-900 mb-2">Personal Information</h3>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <Database className="h-5 w-5" /> 1. Information We Collect
+            </h2>
+            <div className="space-y-6 text-gray-700 dark:text-gray-300">
+              <div className="border-l-4 border-brand-500 pl-4">
+                <h3 className="font-medium text-gray-900 dark:text-white mb-2">Personal Information</h3>
                 <ul className="list-disc pl-6 space-y-1">
-                  <li>Email address (for account creation and communication)</li>
-                  <li>Payment information (processed securely through our payment providers)</li>
-                  <li>Usage preferences and settings</li>
+                  <li>Email address (for account creation, order confirmations, and customer support)</li>
+                  <li>Name (optional, for personalized experience)</li>
+                  <li>Payment information (securely processed through Stripe and never stored on our servers)</li>
+                  <li>Account preferences and settings</li>
+                  <li>Communication preferences (newsletter, updates, promotional content)</li>
                 </ul>
               </div>
               
-              <div>
-                <h3 className="font-medium text-gray-900 mb-2">Generated Content</h3>
+              <div className="border-l-4 border-purple-500 pl-4">
+                <h3 className="font-medium text-gray-900 dark:text-white mb-2">AI Generation Data</h3>
                 <ul className="list-disc pl-6 space-y-1">
-                  <li>Text prompts you provide for AI coloring page generation</li>
-                  <li>Generated coloring pages and associated metadata</li>
-                  <li>Download and usage history</li>
+                  <li>Text prompts you provide for coloring page generation</li>
+                  <li>Selected age groups, categories, and style preferences</li>
+                  <li>Generated coloring page images and metadata</li>
+                  <li>Generation history and usage patterns</li>
+                  <li>Download history and preferences</li>
+                  <li>Content feedback and ratings (when provided)</li>
                 </ul>
+                <p className="mt-2 text-sm text-purple-600 dark:text-purple-400">
+                  <strong>Note:</strong> All prompts are automatically filtered for appropriateness before processing.
+                </p>
               </div>
 
-              <div>
-                <h3 className="font-medium text-gray-900 mb-2">Technical Information</h3>
+              <div className="border-l-4 border-green-500 pl-4">
+                <h3 className="font-medium text-gray-900 dark:text-white mb-2">Technical Information</h3>
                 <ul className="list-disc pl-6 space-y-1">
-                  <li>IP address and device information</li>
-                  <li>Browser type and version</li>
-                  <li>Usage analytics and performance data</li>
+                  <li>IP address and approximate location (for security and service optimization)</li>
+                  <li>Device information (browser type, operating system, screen resolution)</li>
+                  <li>Usage analytics (pages visited, time spent, feature usage)</li>
+                  <li>Performance data (loading times, error reports)</li>
                   <li>Cookies and similar tracking technologies</li>
+                  <li>Session information and authentication tokens</li>
                 </ul>
               </div>
             </div>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">2. How We Use Your Information</h2>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700">
-              <li>To provide and improve our AI coloring page generation service</li>
-              <li>To process payments and manage your account</li>
-              <li>To communicate with you about your account and our services</li>
-              <li>To analyze usage patterns and improve our service quality</li>
-              <li>To prevent fraud and ensure service security</li>
-              <li>To comply with legal obligations</li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">3. Information Sharing</h2>
-            <div className="space-y-4 text-gray-700">
-              <p>We do not sell, trade, or rent your personal information to third parties. We may share information in the following limited circumstances:</p>
-              <ul className="list-disc pl-6 space-y-1">
-                <li><strong>Service Providers:</strong> With trusted third-party services that help us operate our platform (payment processing, hosting, analytics)</li>
-                <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
-                <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets</li>
-              </ul>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <Lock className="h-5 w-5" /> 2. How We Use Your Information
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-50 dark:bg-surface-900 rounded-lg p-6">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">🎨 Service Delivery</h3>
+                <ul className="list-disc pl-6 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Generate AI-powered coloring pages based on your prompts</li>
+                  <li>Process payments and manage subscription billing</li>
+                  <li>Provide download access to generated content</li>
+                  <li>Maintain your account and generation history</li>
+                </ul>
+              </div>
+              <div className="bg-gray-50 dark:bg-surface-900 rounded-lg p-6">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">🔧 Service Improvement</h3>
+                <ul className="list-disc pl-6 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Analyze usage patterns to improve AI generation quality</li>
+                  <li>Optimize website performance and user experience</li>
+                  <li>Develop new features based on user needs</li>
+                  <li>Ensure content safety and appropriateness</li>
+                </ul>
+              </div>
+              <div className="bg-gray-50 dark:bg-surface-900 rounded-lg p-6">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">📧 Communication</h3>
+                <ul className="list-disc pl-6 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Send account-related notifications and updates</li>
+                  <li>Provide customer support and technical assistance</li>
+                  <li>Share educational content and tips (with consent)</li>
+                  <li>Notify about new features and improvements</li>
+                </ul>
+              </div>
+              <div className="bg-gray-50 dark:bg-surface-900 rounded-lg p-6">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">🛡️ Security & Compliance</h3>
+                <ul className="list-disc pl-6 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Prevent fraud and unauthorized access</li>
+                  <li>Ensure compliance with legal obligations</li>
+                  <li>Monitor for inappropriate content or misuse</li>
+                  <li>Maintain service security and integrity</li>
+                </ul>
+              </div>
             </div>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">4. Data Security</h2>
-            <div className="space-y-4 text-gray-700">
-              <p>We implement industry-standard security measures to protect your information:</p>
-              <ul className="list-disc pl-6 space-y-1">
-                <li>Encryption of data in transit and at rest</li>
-                <li>Secure payment processing through certified providers</li>
-                <li>Regular security audits and updates</li>
-                <li>Access controls and authentication measures</li>
-              </ul>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <Clock className="h-5 w-5" /> 3. Data Retention
+            </h2>
+            <div className="space-y-4 text-gray-700 dark:text-gray-300">
+              <p>We retain your information only for as long as necessary to fulfill the purposes outlined in this policy:</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {dataRetentionPeriods.map((item, index) => (
+                  <div key={index} className="bg-gray-50 dark:bg-surface-900 rounded-lg p-4">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{item.category}</h3>
+                    <p className="text-brand-600 dark:text-brand-400 font-medium mb-1">{item.period}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 mt-4">
+                <p className="text-amber-800 dark:text-amber-200 text-sm">
+                  <strong>Note:</strong> You can request deletion of your data at any time through your account settings or by contacting our support team.
+                </p>
+              </div>
             </div>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">5. Your Rights and Choices</h2>
-            <div className="space-y-4 text-gray-700">
-              <p>You have the following rights regarding your personal information:</p>
-              <ul className="list-disc pl-6 space-y-1">
-                <li><strong>Access:</strong> Request access to your personal data</li>
-                <li><strong>Correction:</strong> Request correction of inaccurate information</li>
-                <li><strong>Deletion:</strong> Request deletion of your personal data</li>
-                <li><strong>Portability:</strong> Request transfer of your data</li>
-                <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
-              </ul>
-              <p>To exercise these rights, contact us at <a href="mailto:privacy@thinkora.pics" className="text-purple-600 hover:text-purple-700">privacy@thinkora.pics</a></p>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <Cookie className="h-5 w-5" /> 4. Cookie Policy
+            </h2>
+            <div className="space-y-4 text-gray-700 dark:text-gray-300">
+              <p>We use cookies and similar technologies to enhance your experience:</p>
+              
+              <div className="space-y-4">
+                {cookieTypes.map((type, index) => (
+                  <div key={index} className="bg-gray-50 dark:bg-surface-900 rounded-lg p-4">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{type.type} Cookies</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{type.purpose}</p>
+                    <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2">
+                      <Clock className="h-4 w-4" />
+                      <span>Duration: {type.duration}</span>
+                    </div>
+                    <div className="text-sm">
+                      <p className="font-medium text-gray-900 dark:text-white mb-1">Examples:</p>
+                      <ul className="list-disc pl-6 space-y-1 text-gray-600 dark:text-gray-400">
+                        {type.examples.map((example, i) => (
+                          <li key={i}>{example}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mt-4">
+                <p className="text-blue-800 dark:text-blue-200 text-sm">
+                  <strong>Cookie Control:</strong> You can control cookie preferences through your browser settings. 
+                  However, disabling certain cookies may affect the functionality of our service.
+                </p>
+              </div>
             </div>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">6. Cookies and Tracking</h2>
-            <div className="space-y-4 text-gray-700">
-              <p>We use cookies and similar technologies to:</p>
-              <ul className="list-disc pl-6 space-y-1">
-                <li>Remember your preferences and settings</li>
-                <li>Analyze website performance and usage</li>
-                <li>Provide personalized content and features</li>
-              </ul>
-              <p>You can control cookie settings through your browser preferences.</p>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <Globe className="h-5 w-5" /> 5. International Data Transfers
+            </h2>
+            <div className="space-y-4 text-gray-700 dark:text-gray-300">
+              <p>Your information may be transferred to and processed in countries other than your own:</p>
+              
+              <div className="bg-gray-50 dark:bg-surface-900 rounded-lg p-6">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Data Protection Standards</h3>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>We ensure appropriate safeguards are in place for international transfers</li>
+                  <li>We comply with GDPR requirements for EU data transfers</li>
+                  <li>We maintain data processing agreements with all service providers</li>
+                  <li>We regularly review and update our data protection measures</li>
+                </ul>
+              </div>
+              
+              <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                <h3 className="font-semibold text-green-900 dark:text-green-100 mb-2">Your Rights Under GDPR</h3>
+                <ul className="list-disc pl-6 space-y-1 text-green-800 dark:text-green-200">
+                  <li>Right to access your personal data</li>
+                  <li>Right to rectification of inaccurate data</li>
+                  <li>Right to erasure ("right to be forgotten")</li>
+                  <li>Right to data portability</li>
+                  <li>Right to object to processing</li>
+                  <li>Right to withdraw consent</li>
+                </ul>
+              </div>
             </div>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">7. Children's Privacy</h2>
-            <p className="text-gray-700">
-              While our coloring pages are designed for children, our service is intended for use by adults (parents, teachers, caregivers). 
-              We do not knowingly collect personal information from children under 13. If you believe we have collected information 
-              from a child under 13, please contact us immediately.
-            </p>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <FileText className="h-5 w-5" /> 6. Changes to This Policy
+            </h2>
+            <div className="space-y-4 text-gray-700 dark:text-gray-300">
+              <p>We may update this privacy policy from time to time. We will notify you of any changes by:</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Posting the new policy on this page</li>
+                <li>Updating the "Last Updated" date</li>
+                <li>Sending an email notification for significant changes</li>
+                <li>Displaying a notice on our website</li>
+              </ul>
+              <p>We encourage you to review this policy periodically for any changes.</p>
+            </div>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">8. International Data Transfers</h2>
-            <p className="text-gray-700">
-              Your information may be processed and stored in countries other than your own. We ensure appropriate safeguards 
-              are in place to protect your data in accordance with applicable privacy laws.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">9. Data Retention</h2>
-            <p className="text-gray-700">
-              We retain your personal information only as long as necessary to provide our services and fulfill legal obligations. 
-              Generated coloring pages are retained in your account until you delete them or close your account.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">10. Changes to This Policy</h2>
-            <p className="text-gray-700">
-              We may update this Privacy Policy from time to time. We will notify you of significant changes by email or 
-              through our service. Your continued use of our service after changes take effect constitutes acceptance of the updated policy.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">11. Contact Information</h2>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-gray-700 mb-2">
-                If you have questions about this Privacy Policy or our data practices, please contact us:
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <Mail className="h-5 w-5" /> 7. Contact Us
+            </h2>
+            <div className="bg-gray-50 dark:bg-surface-900 rounded-lg p-6">
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                If you have any questions about this Privacy Policy, please contact us:
               </p>
-              <ul className="text-gray-700 space-y-1">
-                <li><strong>Email:</strong> <a href="mailto:privacy@thinkora.pics" className="text-purple-600 hover:text-purple-700">privacy@thinkora.pics</a></li>
-                <li><strong>Support:</strong> <a href="mailto:support@thinkora.pics" className="text-purple-600 hover:text-purple-700">support@thinkora.pics</a></li>
-                <li><strong>Business Address:</strong> [Your Business Address]</li>
+              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                <li><strong>Email:</strong> <a href="mailto:privacy@thinkora.pics" className="text-brand-600 dark:text-brand-400 hover:underline">privacy@thinkora.pics</a></li>
+                <li><strong>Support:</strong> <a href="mailto:support@thinkora.pics" className="text-brand-600 dark:text-brand-400 hover:underline">support@thinkora.pics</a></li>
+                <li><strong>Data Protection Officer:</strong> <a href="mailto:dpo@thinkora.pics" className="text-brand-600 dark:text-brand-400 hover:underline">dpo@thinkora.pics</a></li>
               </ul>
             </div>
           </section>
