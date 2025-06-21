@@ -1,9 +1,0 @@
-requests==2.31.0
-pillow==10.0.1
-rembg==2.0.52
-python-dotenv==1.0.0
-tqdm==4.66.1
-opencv-python==4.8.1.78
-numpy==1.24.3
-torch==2.0.1
-torchvision==0.15.2

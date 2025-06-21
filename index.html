@@ -1,428 +1,1006 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🖼️ Transparent PNG Hub - 免费透明背景图片</title>
+    <meta name="description" content="High-quality transparent PNG images for designers and creators. Free to download with proper attribution.">
+    <title>Transparent PNG Hub - Free Transparent Background Images</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🖼️%3C/text%3E%3C/svg%3E">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --surface-light: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+            --error: #ef4444;
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        .container { max-width: 1200px; margin: 0 auto; }
-        
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .search-container {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        .search-box {
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 15px 20px;
-            font-size: 18px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        
-        .search-box:focus {
-            border-color: #667eea;
-        }
-        
-        .stats {
-            text-align: center;
-            color: #666;
-            margin: 15px 0;
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-        
-        .image-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-        
-        .image-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-        
-        .image-container {
-            position: relative;
-            height: 200px;
-            background: 
-                linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
-                linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
-                linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            height: 100%;
+            background: var(--background);
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
         }
-        
-        .image-container img {
-            max-width: 90%;
-            max-height: 90%;
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--surface-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        .header {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        /* Search Bar */
+        .search-container {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--surface-light);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .theme-toggle {
+            padding: 0.5rem;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--surface-light);
+            border-color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.1) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 2rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            padding: 0.5rem 1rem;
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-chip:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .filter-chip.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .results-info {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Gallery Grid */
+        .gallery-section {
+            padding: 2rem;
+            min-height: 60vh;
+        }
+
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Image Card */
+        .image-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            group: card;
+        }
+
+        .image-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-wrapper {
+            position: relative;
+            padding-top: 100%;
+            background: repeating-conic-gradient(#1e293b 0% 25%, #334155 0% 50%) 50% / 20px 20px;
+            overflow: hidden;
+        }
+
+        .image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-            transition: transform 0.3s;
+            transition: var(--transition);
         }
-        
-        .image-card:hover img {
+
+        .image-card:hover .image-wrapper img {
             transform: scale(1.05);
         }
-        
-        .image-info {
-            padding: 20px;
-        }
-        
-        .image-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            height: 40px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-        
-        .image-author {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 12px;
-        }
-        
-        .image-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 15px;
-        }
-        
-        .tag {
-            background: #f0f4ff;
-            color: #5a67d8;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .download-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        
-        .download-btn:hover {
-            opacity: 0.9;
-        }
-        
-        .loading {
-            text-align: center;
-            color: white;
-            font-size: 18px;
-            margin: 50px 0;
-        }
-        
-        .no-results {
-            text-align: center;
-            color: white;
-            font-size: 18px;
-            margin: 50px 0;
-            opacity: 0.8;
-        }
-        
-        .image-meta {
-            display: flex;
-            gap: 10px;
-            margin: 8px 0;
-            font-size: 12px;
-            color: #666;
-            flex-wrap: wrap;
-        }
-        
-        .meta-item {
-            background: #f0f0f0;
-            padding: 2px 6px;
-            border-radius: 4px;
-            white-space: nowrap;
-        }
-        
-        .attribution-toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            transform: translateY(100px);
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
             opacity: 0;
-            transition: all 0.3s ease;
-            max-width: 400px;
-            z-index: 1000;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
         }
-        
-        .attribution-toast.show {
-            transform: translateY(0);
+
+        .image-card:hover .image-overlay {
             opacity: 1;
         }
-        
-        .attribution-toast p {
-            margin: 0 0 10px 0;
+
+        .overlay-content {
+            width: 100%;
         }
-        
-        .attribution-toast p:last-child {
-            margin: 0;
-            font-size: 14px;
-            color: #666;
+
+        .overlay-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: white;
         }
-        
-        .attribution-toast a {
-            color: #667eea;
-            text-decoration: none;
+
+        .overlay-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .image-info {
+            padding: 1.25rem;
+            background: var(--surface);
+        }
+
+        .image-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .image-author {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .image-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--surface-light);
+            border-radius: 999px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .image-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .download-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .download-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state svg {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            opacity: 0.3;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Attribution Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            max-width: 400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(120%);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+
+        .toast-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--success);
             font-weight: 600;
         }
-        
-        .attribution-toast a:hover {
+
+        .toast-body {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .toast-body a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toast-body a:hover {
             text-decoration: underline;
         }
-        
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header h1 { font-size: 2rem; }
-            .gallery { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-            .search-container { padding: 15px; }
-            .attribution-toast { 
-                left: 20px; 
-                right: 20px; 
-                max-width: none;
+            .header-content {
+                flex-wrap: wrap;
+                padding: 1rem;
             }
+
+            .search-container {
+                order: 3;
+                flex-basis: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .toast {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .slide-in {
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Utility Classes */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🖼️ Transparent PNG Hub</h1>
-            <p>高质量透明背景图片，免费下载，设计师首选</p>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <span class="logo-icon">🖼️</span>
+                <span>Transparent PNG Hub</span>
+            </a>
+
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input 
+                        type="search" 
+                        class="search-input" 
+                        placeholder="Search transparent images..."
+                        id="searchInput"
+                        autocomplete="off"
+                    >
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#license" class="nav-link">License</a>
+                <button class="theme-toggle" title="Toggle theme" onclick="alert('Theme toggle coming soon!')">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </button>
+            </nav>
         </div>
-        
-        <div class="search-container">
-            <input 
-                type="text" 
-                id="search" 
-                class="search-box" 
-                placeholder="搜索图片...（试试输入：laptop, coffee, minimal）"
-            >
-            <div id="stats" class="stats">正在加载图片...</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Transparent PNG Images</h1>
+            <p>Discover high-quality transparent background images for your creative projects. Free to download with proper attribution.</p>
         </div>
-        
-        <div id="loading" class="loading">🔄 加载中...</div>
-        <div id="gallery" class="gallery"></div>
-        <div id="no-results" class="no-results" style="display: none;">
-            😔 没有找到相关图片，试试其他关键词吧
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-content">
+            <div class="filter-chips">
+                <button class="filter-chip active" data-category="all">All</button>
+                <button class="filter-chip" data-category="electronics">Electronics</button>
+                <button class="filter-chip" data-category="office">Office</button>
+                <button class="filter-chip" data-category="lifestyle">Lifestyle</button>
+                <button class="filter-chip" data-category="photography">Photography</button>
+                <button class="filter-chip" data-category="audio">Audio</button>
+                <button class="filter-chip" data-category="mobile">Mobile</button>
+                <button class="filter-chip" data-category="others">Others</button>
+            </div>
+            <div class="results-info" id="resultsInfo">
+                Loading images...
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Images will be loaded here -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3>No images found</h3>
+            <p>Try adjusting your search or filters</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Transparent PNG Hub provides high-quality transparent background images for designers and creators. All images are carefully curated and processed for optimal quality.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links</h3>
+                <a href="https://unsplash.com" target="_blank">Image Source</a><br>
+                <a href="#license">License Terms</a><br>
+                <a href="#privacy">Privacy Policy</a><br>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <a href="#electronics">Electronics</a><br>
+                <a href="#office">Office & Work</a><br>
+                <a href="#lifestyle">Lifestyle</a><br>
+                <a href="#photography">Photography</a>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p>Stay updated with new image releases and design resources.</p>
+                <p style="margin-top: 1rem;">Made with ❤️ for designers</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Transparent PNG Hub. All images require proper attribution.</p>
+        </div>
+    </footer>
+
+    <!-- Attribution Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-header">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>Download Started!</span>
+        </div>
+        <div class="toast-body" id="toastBody">
+            <!-- Attribution text will be inserted here -->
         </div>
     </div>
 
     <script>
+        // Global state
         let allImages = [];
-        let displayedImages = [];
-        
-        // 加载元数据
+        let filteredImages = [];
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        // DOM elements
+        const loadingScreen = document.getElementById('loadingScreen');
+        const searchInput = document.getElementById('searchInput');
+        const galleryGrid = document.getElementById('galleryGrid');
+        const emptyState = document.getElementById('emptyState');
+        const resultsInfo = document.getElementById('resultsInfo');
+        const toast = document.getElementById('toast');
+        const toastBody = document.getElementById('toastBody');
+        const filterChips = document.querySelectorAll('.filter-chip');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', init);
+
+        async function init() {
+            try {
+                await loadImages();
+                setupEventListeners();
+                hideLoading();
+            } catch (error) {
+                console.error('Failed to initialize:', error);
+                showError();
+            }
+        }
+
+        // Load images from metadata
         async function loadImages() {
             try {
                 const response = await fetch('./metadata.json');
+                if (!response.ok) throw new Error('Failed to load metadata');
+                
                 allImages = await response.json();
-                
-                console.log('已加载图片数量:', allImages.length);
-                displayImages(allImages);
-                updateStats(allImages.length, allImages.length);
-                document.getElementById('loading').style.display = 'none';
-                
+                filteredImages = [...allImages];
+                renderGallery();
+                updateResultsInfo();
             } catch (error) {
-                console.error('加载图片失败:', error);
-                document.getElementById('loading').innerHTML = '❌ 加载失败，请刷新页面重试';
+                console.error('Error loading images:', error);
+                throw error;
             }
         }
-        
-        // 显示图片
-        function displayImages(images) {
-            const gallery = document.getElementById('gallery');
-            const noResults = document.getElementById('no-results');
-            
-            if (images.length === 0) {
-                gallery.innerHTML = '';
-                noResults.style.display = 'block';
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search input
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+
+            // Category filters
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', handleCategoryFilter);
+            });
+
+            // Keyboard navigation
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    searchInput.value = '';
+                    handleSearch();
+                }
+            });
+        }
+
+        // Handle search
+        function handleSearch() {
+            searchQuery = searchInput.value.toLowerCase().trim();
+            applyFilters();
+        }
+
+        // Handle category filter
+        function handleCategoryFilter(e) {
+            // Update active state
+            filterChips.forEach(chip => chip.classList.remove('active'));
+            e.target.classList.add('active');
+
+            currentCategory = e.target.dataset.category;
+            applyFilters();
+        }
+
+        // Apply all filters
+        function applyFilters() {
+            filteredImages = allImages.filter(img => {
+                // Category filter
+                const categoryMatch = currentCategory === 'all' || img.category === currentCategory;
+
+                // Search filter
+                const searchMatch = !searchQuery || [
+                    img.title,
+                    img.description,
+                    img.author.name,
+                    ...img.tags
+                ].some(text => text.toLowerCase().includes(searchQuery));
+
+                return categoryMatch && searchMatch;
+            });
+
+            renderGallery();
+            updateResultsInfo();
+        }
+
+        // Render gallery
+        function renderGallery() {
+            if (filteredImages.length === 0) {
+                galleryGrid.style.display = 'none';
+                emptyState.style.display = 'block';
                 return;
             }
-            
-            noResults.style.display = 'none';
-            displayedImages = images;
-            
-            gallery.innerHTML = images.map(img => `
-                <div class="image-card" onclick="downloadImage('${img.id}', '${img.title}', '${img.author.name}', '${img.author.url}')">
-                    <div class="image-container">
+
+            galleryGrid.style.display = 'grid';
+            emptyState.style.display = 'none';
+
+            galleryGrid.innerHTML = filteredImages.map(img => createImageCard(img)).join('');
+        }
+
+        // Create image card HTML
+        function createImageCard(img) {
+            return `
+                <article class="image-card" data-id="${img.id}">
+                    <div class="image-wrapper">
                         <img 
                             src="${img.urls.thumbnail}" 
                             alt="${img.title}"
                             loading="lazy"
-                            onerror="this.parentElement.innerHTML='<div style=&quot;color:#999&quot;>图片加载失败</div>'"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 400\"%3E%3Crect fill=\"%23334155\" width=\"400\" height=\"400\"/%3E%3Ctext x=\"50%25\" y=\"50%25\" text-anchor=\"middle\" dy=\".3em\" fill=\"%2394a3b8\" font-family=\"system-ui\" font-size=\"16\"%3EImage unavailable%3C/text%3E%3C/svg%3E'"
                         >
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3 class="overlay-title">${img.title}</h3>
+                                <div class="overlay-meta">
+                                    <span>${img.dimensions.width} × ${img.dimensions.height}</span>
+                                    <span>${img.file_size}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="image-info">
-                        <div class="image-title">${img.title}</div>
-                        <div class="image-author">📷 ${img.author.name}</div>
-                        <div class="image-meta">
-                            <span class="meta-item">📐 ${img.dimensions.width}×${img.dimensions.height}</span>
-                            <span class="meta-item">📦 ${img.file_size}</span>
-                            <span class="meta-item">⭐ ${img.quality_score}分</span>
-                        </div>
+                        <h3 class="image-title" title="${img.title}">${img.title}</h3>
+                        <p class="image-author">by ${img.author.name}</p>
                         <div class="image-tags">
-                            ${img.tags.slice(0, 4).map(tag => 
-                                `<span class="tag">${tag}</span>`
-                            ).join('')}
+                            ${img.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('')}
                         </div>
-                        <button class="download-btn" onclick="event.stopPropagation(); downloadImage('${img.id}', '${img.title}', '${img.author.name}', '${img.author.url}')">
-                            ⬇️ 下载 PNG
+                        <div class="image-stats">
+                            <div class="stat-item">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <span>${img.dimensions.ratio}</span>
+                            </div>
+                            <div class="stat-item">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                                <span>${img.quality_score}%</span>
+                            </div>
+                        </div>
+                        <button class="download-button" onclick="downloadImage('${img.id}')">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                            </svg>
+                            Download PNG
                         </button>
                     </div>
-                </div>
-            `).join('');
+                </article>
+            `;
         }
-        
-        // 更新统计信息
-        function updateStats(displayed, total) {
-            document.getElementById('stats').innerHTML = 
-                `📊 显示 ${displayed} 张图片，共 ${total} 张可用`;
-        }
-        
-        // 搜索功能
-        document.getElementById('search').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            
-            if (!query) {
-                displayImages(allImages);
-                updateStats(allImages.length, allImages.length);
-                return;
-            }
-            
-            const filtered = allImages.filter(img => {
-                const searchText = [
-                    img.title,
-                    img.author.name,
-                    img.description,
-                    img.category,
-                    ...img.tags
-                ].join(' ').toLowerCase();
-                
-                return searchText.includes(query);
-            });
-            
-            displayImages(filtered);
-            updateStats(filtered.length, allImages.length);
-        });
-        
-        // 下载功能（包含署名）
-        function downloadImage(imageId, title, authorName, authorUrl) {
+
+        // Download image
+        function downloadImage(imageId) {
             const img = allImages.find(i => i.id === imageId);
-            if (!img) {
-                // 兼容旧的调用方式
-                const link = document.createElement('a');
-                link.href = `./png/${imageId.replace('unsplash_', '')}.png`;
-                link.download = `${title.replace(/[^a-z0-9\u4e00-\u9fa5]/gi, '_')}.png`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                return;
-            }
-            
-            // 创建下载链接
+            if (!img) return;
+
+            // Create download link
             const link = document.createElement('a');
             link.href = img.urls.download;
-            link.download = `${title.replace(/[^a-z0-9\u4e00-\u9fa5]/gi, '_')}.png`;
-            
-            // 添加署名信息
-            link.setAttribute('data-author', authorName);
-            link.setAttribute('data-author-url', authorUrl);
-            link.setAttribute('data-unsplash-url', img.unsplash.url);
+            link.download = `${img.title.replace(/[^a-z0-9]/gi, '_')}.png`;
+            link.style.display = 'none';
             
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            
-            // 显示署名提示
-            showAttribution(authorName, authorUrl);
+
+            // Show attribution toast
+            showAttributionToast(img);
+
+            // Analytics
+            console.log('Download:', img.title);
         }
-        
-        // 显示署名提示
-        function showAttribution(authorName, authorUrl) {
-            const toast = document.createElement('div');
-            toast.className = 'attribution-toast';
-            toast.innerHTML = `
-                <p>✅ 下载成功！请记得署名：</p>
-                <p>Photo by <a href="${authorUrl}" target="_blank">${authorName}</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a></p>
+
+        // Show attribution toast
+        function showAttributionToast(img) {
+            toastBody.innerHTML = `
+                Please credit the photographer:<br>
+                Photo by <a href="${img.author.url}" target="_blank">${img.author.name}</a> 
+                on <a href="https://unsplash.com" target="_blank">Unsplash</a>
             `;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.add('show');
-            }, 100);
-            
+
+            toast.classList.add('show');
+
             setTimeout(() => {
                 toast.classList.remove('show');
-                setTimeout(() => document.body.removeChild(toast), 300);
             }, 5000);
         }
-        
-        // 页面加载完成后初始化
-        document.addEventListener('DOMContentLoaded', loadImages);
+
+        // Update results info
+        function updateResultsInfo() {
+            const showing = filteredImages.length;
+            const total = allImages.length;
+            
+            resultsInfo.textContent = `Showing ${showing} of ${total} images`;
+        }
+
+        // Hide loading screen
+        function hideLoading() {
+            loadingScreen.classList.add('hidden');
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
+
+        // Show error state
+        function showError() {
+            hideLoading();
+            galleryGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 4rem;">
+                    <p style="color: var(--error);">Failed to load images. Please refresh the page.</p>
+                </div>
+            `;
+        }
+
+        // Utility: Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Utility: Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
