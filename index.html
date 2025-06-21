@@ -309,6 +309,8 @@
             padding-top: 100%;
             background: repeating-conic-gradient(#1e293b 0% 25%, #334155 0% 50%) 50% / 20px 20px;
             overflow: hidden;
+            display: block;
+            text-decoration: none;
         }
 
         .image-wrapper img {
@@ -862,9 +864,10 @@
 
         // Create image card HTML
         function createImageCard(img) {
+            const imageSlug = img.id.replace('unsplash_', '');
             return `
                 <article class="image-card" data-id="${img.id}">
-                    <div class="image-wrapper">
+                    <a href="/images/${imageSlug}.html" class="image-wrapper">
                         <img 
                             src="${img.urls.thumbnail}" 
                             alt="${img.title}"
@@ -880,9 +883,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="image-info">
-                        <h3 class="image-title" title="${img.title}">${img.title}</h3>
+                        <h3 class="image-title" title="${img.title}">
+                            <a href="/images/${imageSlug}.html" style="color: inherit; text-decoration: none;">
+                                ${img.title}
+                            </a>
+                        </h3>
                         <p class="image-author">by ${img.author.name}</p>
                         <div class="image-tags">
                             ${img.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('')}
@@ -901,7 +908,7 @@
                                 <span>${img.quality_score}%</span>
                             </div>
                         </div>
-                        <button class="download-button" onclick="downloadImage('${img.id}')">
+                        <button class="download-button" onclick="event.preventDefault(); downloadImage('${img.id}')">
                             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                             </svg>
