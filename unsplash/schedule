@@ -1,0 +1,9 @@
+# 编辑定时任务
+crontab -e
+
+# 添加以下任务（每2小时下载15张，每4小时处理图片）
+0 */2 * * * cd /Users/xuhaoying/Desktop/100-Project/AI_Web/A005_AIPics/thinkora.pics/unsplash && source venv/bin/activate && python mac_downloader.py --download 15 >> /Users/xuhaoying/Desktop/100-Project/AI_Web/A005_AIPics/thinkora.pics/unsplash/logs/cron.log 2>&1
+
+0 */4 * * * cd /Users/xuhaoying/Desktop/100-Project/AI_Web/A005_AIPics/thinkora.pics/unsplash && source venv/bin/activate && python mac_downloader.py --process >> /Users/xuhaoying/Desktop/100-Project/AI_Web/A005_AIPics/thinkora.pics/unsplash/logs/cron.log 2>&1
+
+# 保存退出（vim: 按ESC，输入:wq）
