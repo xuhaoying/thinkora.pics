@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Mac 本地透明PNG下载器
-适配 macOS 环境，包含完整的错误处理和进度显示
+Mac 本地透明PNG下载器 - 修复版
 """
 
 import os
@@ -17,7 +16,6 @@ import sys
 
 # macOS 特定配置
 if sys.platform == "darwin":
-    # 禁用 OpenMP 警告（macOS 常见问题）
     os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 class MacDownloader:
@@ -111,6 +109,48 @@ class MacDownloader:
         
         return self.state["requests_this_hour"] < 45  # 留5个请求的余量
     
+    def validate_photo_data(self, photo):
+        """验证图片数据结构"""
+        try:
+            # 检查必需字段
+            required_fields = ["id", "urls", "user", "links", "width", "height"]
+            
+            if not isinstance(photo, dict):
+                print(f"⚠️ 图片数据不是字典类型: {type(photo)}")
+                return False
+            
+            for field in required_fields:
+                if field not in photo:
+                    print(f"⚠️ 缺少必需字段: {field}")
+                    return False
+            
+            # 检查嵌套结构
+            if not isinstance(photo.get("urls"), dict):
+                print(f"⚠️ urls 字段格式错误")
+                return False
+            
+            if "regular" not in photo["urls"]:
+                print(f"⚠️ 缺少 regular URL")
+                return False
+            
+            if not isinstance(photo.get("user"), dict):
+                print(f"⚠️ user 字段格式错误")
+                return False
+            
+            if not isinstance(photo.get("links"), dict):
+                print(f"⚠️ links 字段格式错误")
+                return False
+            
+            if "download_location" not in photo["links"]:
+                print(f"⚠️ 缺少 download_location")
+                return False
+            
+            return True
+            
+        except Exception as e:
+            print(f"⚠️ 验证图片数据时出错: {e}")
+            return False
+    
     def download_batch(self, batch_size=15):
         """下载一批图片"""
         if not self.check_api_limit():
@@ -145,10 +185,31 @@ class MacDownloader:
                 
                 if response.status_code != 200:
                     print(f"❌ API请求失败: {response.status_code}")
+                    print(f"响应内容: {response.text[:200]}...")
                     break
                 
                 self.state["requests_this_hour"] += 1
-                results = response.json().get("results", [])
+                
+                # 解析响应
+                try:
+                    response_data = response.json()
+                    print(f"🔍 API响应结构: {list(response_data.keys())}")
+                    
+                    if "results" not in response_data:
+                        print(f"❌ 响应中没有 results 字段")
+                        print(f"完整响应: {response_data}")
+                        break
+                    
+                    results = response_data["results"]
+                    
+                    if not isinstance(results, list):
+                        print(f"❌ results 不是列表类型: {type(results)}")
+                        break
+                    
+                except json.JSONDecodeError as e:
+                    print(f"❌ JSON解析失败: {e}")
+                    print(f"响应内容: {response.text[:200]}...")
+                    break
                 
                 if not results:
                     print("📄 没有更多结果")
@@ -156,32 +217,47 @@ class MacDownloader:
                 
                 print(f"✅ 找到 {len(results)} 张图片")
                 
-                for photo in results:
+                for i, photo in enumerate(results):
                     if downloaded >= batch_size:
                         break
                     
-                    # 检查重复
-                    if photo["id"] in self.downloaded_ids:
+                    try:
+                        print(f"🔍 检查图片 {i+1}: {photo.get('id', 'unknown')}")
+                        
+                        # 验证数据结构
+                        if not self.validate_photo_data(photo):
+                            print(f"⚠️ 跳过无效图片数据")
+                            continue
+                        
+                        # 检查重复
+                        if photo["id"] in self.downloaded_ids:
+                            print(f"⏭️ 跳过重复图片: {photo['id']}")
+                            continue
+                        
+                        # 质量检查
+                        if photo["width"] < 1000 or photo["height"] < 1000:
+                            print(f"⚠️ 跳过低质量图片: {photo['id']} ({photo['width']}x{photo['height']})")
+                            continue
+                        
+                        # 下载图片
+                        if self.download_single_image(photo):
+                            downloaded += 1
+                            self.downloaded_ids.add(photo["id"])
+                            print(f"✅ 已下载: {photo['id']} ({downloaded}/{batch_size})")
+                        
+                        if not self.check_api_limit():
+                            print("⚠️ 达到API限制")
+                            break
+                            
+                    except Exception as e:
+                        print(f"❌ 处理图片时出错: {e}")
+                        print(f"图片数据: {photo}")
                         continue
-                    
-                    # 质量检查
-                    if photo["width"] < 1000 or photo["height"] < 1000:
-                        continue
-                    
-                    # 下载图片
-                    if self.download_single_image(photo):
-                        downloaded += 1
-                        self.downloaded_ids.add(photo["id"])
-                        print(f"✅ 已下载: {photo['id']} ({downloaded}/{batch_size})")
-                    
-                    if not self.check_api_limit():
-                        print("⚠️ 达到API限制")
-                        break
                 
                 page += 1
                 
             except Exception as e:
-                print(f"❌ 错误: {e}")
+                print(f"❌ 批次下载出错: {e}")
                 break
         
         self.state["total_downloaded"] += downloaded
@@ -197,24 +273,40 @@ class MacDownloader:
     def download_single_image(self, photo):
         """下载单张图片"""
         try:
+            photo_id = photo["id"]
+            print(f"📥 开始下载: {photo_id}")
+            
             # 下载图片
             img_response = requests.get(photo["urls"]["regular"], timeout=15)
             if img_response.status_code != 200:
+                print(f"❌ 图片下载失败: HTTP {img_response.status_code}")
+                return False
+            
+            # 检查文件大小
+            content_length = len(img_response.content)
+            if content_length > 10 * 1024 * 1024:  # 10MB
+                print(f"⚠️ 文件过大: {content_length / 1024 / 1024:.1f}MB")
                 return False
             
             # 保存文件
-            filename = f"raw/{photo['id']}.jpg"
+            filename = f"raw/{photo_id}.jpg"
             with open(filename, "wb") as f:
                 f.write(img_response.content)
             
+            print(f"💾 已保存: {filename} ({content_length / 1024:.1f}KB)")
+            
             # 发送下载统计（必需）
             if self.check_api_limit():
-                requests.get(
-                    photo["links"]["download_location"],
-                    headers={"Authorization": f"Client-ID {self.access_key}"},
-                    timeout=5
-                )
-                self.state["requests_this_hour"] += 1
+                try:
+                    download_response = requests.get(
+                        photo["links"]["download_location"],
+                        headers={"Authorization": f"Client-ID {self.access_key}"},
+                        timeout=5
+                    )
+                    self.state["requests_this_hour"] += 1
+                    print(f"📊 已发送下载统计")
+                except Exception as e:
+                    print(f"⚠️ 下载统计发送失败: {e}")
             
             # 保存元数据
             self.save_image_metadata(photo)
@@ -222,34 +314,41 @@ class MacDownloader:
             return True
             
         except Exception as e:
-            print(f"⚠️ 下载失败 {photo['id']}: {e}")
+            print(f"❌ 下载失败 {photo.get('id', 'unknown')}: {e}")
+            import traceback
+            traceback.print_exc()
             return False
     
     def save_image_metadata(self, photo):
         """保存图片元数据"""
-        # 加载现有元数据
-        metadata = {}
-        if Path(self.metadata_file).exists():
-            with open(self.metadata_file, 'r') as f:
-                metadata = json.load(f)
-        
-        # 添加新数据
-        metadata[photo["id"]] = {
-            "id": photo["id"],
-            "title": photo.get("description") or photo.get("alt_description") or f"Image {photo['id']}",
-            "author": photo["user"]["name"],
-            "author_url": photo["user"]["links"]["html"],
-            "description": photo.get("description", ""),
-            "width": photo["width"],
-            "height": photo["height"],
-            "unsplash_url": photo["links"]["html"],
-            "downloaded_at": datetime.now().isoformat(),
-            "raw_path": f"raw/{photo['id']}.jpg"
-        }
-        
-        # 保存元数据
-        with open(self.metadata_file, 'w', encoding='utf-8') as f:
-            json.dump(metadata, f, indent=2, ensure_ascii=False)
+        try:
+            # 加载现有元数据
+            metadata = {}
+            if Path(self.metadata_file).exists():
+                with open(self.metadata_file, 'r') as f:
+                    metadata = json.load(f)
+            
+            # 添加新数据
+            metadata[photo["id"]] = {
+                "id": photo["id"],
+                "title": photo.get("description") or photo.get("alt_description") or f"Image {photo['id']}",
+                "author": photo["user"]["name"],
+                "author_url": photo["user"]["links"]["html"],
+                "description": photo.get("description", ""),
+                "width": photo["width"],
+                "height": photo["height"],
+                "likes": photo.get("likes", 0),
+                "unsplash_url": photo["links"]["html"],
+                "downloaded_at": datetime.now().isoformat(),
+                "raw_path": f"raw/{photo['id']}.jpg"
+            }
+            
+            # 保存元数据
+            with open(self.metadata_file, 'w', encoding='utf-8') as f:
+                json.dump(metadata, f, indent=2, ensure_ascii=False)
+                
+        except Exception as e:
+            print(f"⚠️ 保存元数据失败: {e}")
     
     def process_images(self):
         """处理图片（去背景）"""
@@ -307,6 +406,7 @@ def main():
     parser.add_argument("--download", type=int, default=0, help="下载图片数量")
     parser.add_argument("--process", action="store_true", help="处理图片（去背景）")
     parser.add_argument("--status", action="store_true", help="显示状态")
+    parser.add_argument("--debug", action="store_true", help="调试模式")
     args = parser.parse_args()
     
     downloader = MacDownloader()
@@ -330,6 +430,7 @@ def main():
         print("  python mac_downloader.py --download 20    # 下载20张图片")
         print("  python mac_downloader.py --process        # 处理图片去背景")
         print("  python mac_downloader.py --status         # 查看状态")
+        print("  python mac_downloader.py --debug          # 调试模式")
 
 if __name__ == "__main__":
     main()
