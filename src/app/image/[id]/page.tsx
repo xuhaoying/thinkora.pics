@@ -2,6 +2,7 @@ import { getDbConnection } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import type { ImageType } from '@/app/page';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ImagePageProps {
   params: {
@@ -33,14 +34,17 @@ export default async function ImagePage({ params }: ImagePageProps) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Image Display Column */}
-        <div className="md:col-span-2 bg-gray-100 rounded-lg flex items-center justify-center p-4">
-          <img
-            src={image.url_regular || ''}
-            alt={image.title || 'Untitled Image'}
-            width={image.width || 800}
-            height={image.height || 600}
-            className="max-w-full max-h-[80vh] h-auto object-contain"
-          />
+        <div className="md:col-span-2 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center p-4 min-h-[60vh]">
+          <div className="relative max-w-full max-h-[80vh]">
+            <Image
+              src={image.url_regular || ''}
+              alt={image.title || 'Untitled Image'}
+              width={image.width || 800}
+              height={image.height || 600}
+              className="object-contain"
+              priority
+            />
+          </div>
         </div>
 
         {/* Details Column */}
