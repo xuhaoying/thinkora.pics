@@ -1,0 +1,20 @@
+# Core dependencies
+python-dotenv==1.0.0
+requests==2.31.0
+Pillow==10.0.0
+boto3==1.28.62
+
+# Image processing
+rembg==2.0.50
+numpy==1.24.3
+
+# Scheduling
+schedule==1.2.0
+
+# Monitoring and visualization
+matplotlib==3.7.2
+pandas==2.0.3
+
+# Optional: Email notifications
+# Uncomment if you want email notifications
+# secure-smtplib==0.1.1

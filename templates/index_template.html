@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thinkora.pics - Free High-Quality Transparent PNGs</title>
+    <meta name="description" content="A curated collection of high-quality, free-to-use transparent PNG images for designers, developers, and creators.">
+    
+    <!-- SEO & Social -->
+    <meta property="og:title" content="Thinkora.pics - Free High-Quality Transparent PNGs">
+    <meta property="og:description" content="A curated collection of high-quality, free-to-use transparent PNG images.">
+    <meta property="og:image" content="https://img.thinkora.pics/images/og-image.png"> <!-- TODO: Add a generic OG image -->
+    <meta property="og:url" content="https://thinkora.pics">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="stylesheet" href="/public/css/styles-enhanced.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖼️</text></svg>">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="site-title">Thinkora.pics</div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <!-- Removed showcase link and theme switcher for cleaner interface -->
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Search Section -->
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="search-input" class="search-input" placeholder="Search images by title, description, author, or category... (Press '/' to focus)" autocomplete="off">
+                <button id="clear-search" class="clear-search-btn" style="display: none;">×</button>
+            </div>
+            <div id="search-info" class="search-info">Search through {{ images|length }} images</div>
+        </div>
+
+        <div class="image-grid" id="image-grid">
+            {% for image in images %}
+            <div class="image-card">
+                <a href="/images/{{ image.id }}.html">
+                    <div class="image-card__image-wrapper">
+                        <img src="{{ image.imageUrl }}" alt="{{ image.title }}" loading="lazy" width="{{ image.width }}" height="{{ image.height }}">
+                    </div>
+                    <div class="image-card__content">
+                        <h3 class="image-card__title">{{ image.title }}</h3>
+                        {% if image.tags %}
+                        <div class="image-card__tags">
+                            {% for tag in image.tags[:3] %} {# Show first 3 tags #}
+                                <span class="image-card__tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Thinkora.pics. All images are free to use.</p>
+    </footer>
+
+    <script src="/public/js/main-enhanced.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "CORSRules": [
+    {
+      "ID": "allow-thinkora-pics",
+      "AllowedOrigins": [
+        "https://thinkora.pics",
+        "https://www.thinkora.pics",
+        "http://localhost:3000",
+        "http://localhost:8080",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:8080"
+      ],
+      "AllowedMethods": [
+        "GET",
+        "HEAD"
+      ],
+      "AllowedHeaders": [
+        "*"
+      ],
+      "ExposeHeaders": [
+        "ETag",
+        "Content-Type",
+        "Content-Length",
+        "Date"
+      ],
+      "MaxAgeSeconds": 3600
+    }
+  ]
+}

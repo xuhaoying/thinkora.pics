@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Thinkora.pics</title>
+    <meta name="description" content="{{ description }}">
+    
+    <!-- SEO & Social -->
+    <meta property="og:title" content="{{ title }} - Thinkora.pics">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:image" content="{{ image_url }}">
+    <meta property="og:url" content="{{ page_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="stylesheet" href="/public/css/styles-enhanced.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖼️</text></svg>">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="site-title"><a href="/">Thinkora.pics</a></div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <!-- Removed theme switcher for cleaner interface -->
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="detail-container">
+            <div class="detail-image-wrapper">
+                <a href="{{ download_url }}" download="{{ title }}.png" title="Click to download {{ title }}">
+                    <img src="{{ image_url }}" alt="{{ title }}" loading="eager">
+                </a>
+            </div>
+            <div class="detail-info">
+                <h1>{{ title }}</h1>
+                <p>{{ description }}</p>
+                <ul class="detail-meta">
+                    <li><strong>Author:</strong> <a href="{{ author_url }}" target="_blank" rel="noopener noreferrer">{{ author_name }}</a></li>
+                    <li><strong>Dimensions:</strong> {{ dimensions }}</li>
+                    <li><strong>File Size:</strong> {{ file_size }}</li>
+                    <li><strong>Category:</strong> {{ category }}</li>
+                </ul>
+                <a href="{{ download_url }}" class="download-button" download>Download PNG</a>
+                <nav class="detail-nav">
+                    {% if prev_image %}
+                        <a href="/images/{{ prev_image.id }}.html" title="{{ prev_image.title }}">&laquo; Previous</a>
+                    {% endif %}
+                    {% if next_image %}
+                        <a href="/images/{{ next_image.id }}.html" title="{{ next_image.title }}">Next &raquo;</a>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Thinkora.pics. All images are free to use.</p>
+    </footer>
+
+    <script src="/public/js/download-force.js"></script>
+</body>
+</html>

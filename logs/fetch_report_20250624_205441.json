@@ -1,0 +1,38 @@
+{
+  "timestamp": "2025-06-24T20:54:41.718139",
+  "total_found": 120,
+  "selected": 50,
+  "downloaded": 50,
+  "platforms": {
+    "unsplash": 0,
+    "pixabay": 50
+  },
+  "average_tags": 10.0,
+  "queries_used": [
+    "notebook pen",
+    "office supplies",
+    "home decor minimal",
+    "wellness spa",
+    "food photography overhead",
+    "skincare products",
+    "perfume bottle",
+    "plant indoor",
+    "tablet device",
+    "watch timepiece",
+    "fashion accessories",
+    "headphones product",
+    "laptop computer isolated",
+    "bedroom furniture",
+    "handbag purse",
+    "desk accessories",
+    "healthy snacks",
+    "living room modern",
+    "fitness equipment",
+    "coffee beans",
+    "restaurant dish",
+    "jewelry product",
+    "calculator business",
+    "bathroom accessories",
+    "smartphone mockup"
+  ]
+}

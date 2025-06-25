@@ -1,0 +1,108 @@
+{
+  "date": "2025-06-23T16:38:52.764847",
+  "pipeline_status": "success",
+  "execution_time": 105.03,
+  "fetch_report": {
+    "date": "2025-06-23T16:37:37.589764",
+    "query": "single object lifestyle",
+    "total_found": 6,
+    "downloaded": 6,
+    "platforms": {
+      "unsplash": 3,
+      "pexels": 3,
+      "pixabay": 0
+    }
+  },
+  "process_report": {
+    "date": "2025-06-23T16:37:49.193656",
+    "total_processed": 6,
+    "successful": 6,
+    "low_quality": 0,
+    "errors": 0,
+    "success_rate": 100.0,
+    "processed_images": [
+      {
+        "id": "pexels_8516791",
+        "platform": "pexels",
+        "quality_score": 90,
+        "transparency_ratio": 0.8775788483796296
+      },
+      {
+        "id": "unsplash_mQ9vzpnjYnA",
+        "platform": "unsplash",
+        "quality_score": 90,
+        "transparency_ratio": 0.92311725
+      },
+      {
+        "id": "unsplash_GZUwekngRYM",
+        "platform": "unsplash",
+        "quality_score": 80,
+        "transparency_ratio": 0.9247315705128205
+      },
+      {
+        "id": "pexels_10727328",
+        "platform": "pexels",
+        "quality_score": 80,
+        "transparency_ratio": 0.9415810681706115
+      },
+      {
+        "id": "pexels_8532777",
+        "platform": "pexels",
+        "quality_score": 90,
+        "transparency_ratio": 0.9210733637154651
+      },
+      {
+        "id": "unsplash_uh_W-27b8Lw",
+        "platform": "unsplash",
+        "quality_score": 90,
+        "transparency_ratio": 0.3638416851577909
+      }
+    ]
+  },
+  "upload_report": {
+    "date": "2025-06-23T16:38:52.589080",
+    "total_files": 18,
+    "successful_uploads": 18,
+    "failed_uploads": 0,
+    "new_images": 6,
+    "total_images_in_r2": 106,
+    "new_entries": [
+      {
+        "id": "mQ9vzpnjYnA",
+        "title": "Image unsplash_mQ9vzpnjYnA.png",
+        "category": "other",
+        "platform": "unsplash"
+      },
+      {
+        "id": "uh_W-27b8Lw",
+        "title": "Image unsplash_uh_W-27b8Lw.png",
+        "category": "other",
+        "platform": "unsplash"
+      },
+      {
+        "id": "GZUwekngRYM",
+        "title": "Image unsplash_GZUwekngRYM.png",
+        "category": "other",
+        "platform": "unsplash"
+      },
+      {
+        "id": "8516791",
+        "title": "Minimalist shadow of a badminton racket against a white wall, evoking simplicity and sports theme",
+        "category": "other",
+        "platform": "pexels"
+      },
+      {
+        "id": "10727328",
+        "title": "A lone bicycle rests against a rustic wall on a sunlit sidewalk, representing simplicity and solitude",
+        "category": "other",
+        "platform": "pexels"
+      },
+      {
+        "id": "8532777",
+        "title": "Minimalist photo of an adult holding a mustard yellow cup",
+        "category": "other",
+        "platform": "pexels"
+      }
+    ]
+  }
+}

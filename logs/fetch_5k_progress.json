@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-06-25T15:00:30.865703",
+  "stats": {
+    "unsplash": {
+      "fetched": 0,
+      "downloaded": 0
+    },
+    "pixabay": {
+      "fetched": 13409,
+      "downloaded": 2308
+    },
+    "total_with_tags": 2308
+  },
+  "total_downloaded": 4142
+}

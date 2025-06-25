@@ -1,0 +1,24 @@
+{
+  "files_checked": 0,
+  "sitemaps": [
+    "sitemap.xml",
+    "sitemap-images.xml"
+  ],
+  "static_pages": [
+    "index.html",
+    "about.html",
+    "terms.html",
+    "privacy.html",
+    "404.html"
+  ],
+  "category_pages": [
+    "stock photo.html",
+    "photography.html",
+    "food.html",
+    "education.html",
+    "other.html",
+    "business.html"
+  ],
+  "image_pages": 507,
+  "missing_files": []
+}

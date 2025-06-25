@@ -1,0 +1,30 @@
+{
+  "summary": {
+    "total_found": 498,
+    "total_processed": 498,
+    "succeeded": 498,
+    "failed": 0,
+    "skipped": 0,
+    "success_rate": "100.0%",
+    "duration": "0:09:11.718240",
+    "processing_speed": "54.2 images/min"
+  },
+  "category_distribution": {
+    "business": 150,
+    "education": 55,
+    "food": 100,
+    "health": 80,
+    "technology": 113
+  },
+  "output_locations": {
+    "processed_pngs": "png/pixabay_massive",
+    "backup_jpgs": "processed_backup/pixabay_massive",
+    "metadata_files": "png/pixabay_massive/*_metadata.json"
+  },
+  "metadata": {
+    "start_time": "2025-06-24T13:25:30.064035",
+    "end_time": "2025-06-24T13:34:41.782275",
+    "rembg_used": true,
+    "output_format": "PNG with transparency"
+  }
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS下载功能测试</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        .status { 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            font-family: monospace;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .test-btn {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-btn:hover { background: #0056b3; }
+        .test-image {
+            max-width: 200px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 CORS配置测试</h1>
+        
+        <div id="status-container"></div>
+        
+        <h2>测试图片</h2>
+        <img src="https://img.thinkora.pics/images/pixabay_business_1051697.png" 
+             class="test-image" 
+             alt="Test image">
+        
+        <h2>下载测试</h2>
+        <button class="test-btn" onclick="testCORS()">1. 测试CORS状态</button>
+        <button class="test-btn" onclick="testDirectDownload()">2. 测试直接下载</button>
+        <button class="test-btn" onclick="testBlobDownload()">3. 测试Blob下载</button>
+        <button class="test-btn" onclick="testFinalDownload()">4. 测试最终方案</button>
+    </div>
+
+    <script>
+        const testUrl = 'https://img.thinkora.pics/images/pixabay_business_1051697.png';
+        
+        function addStatus(message, type = 'info') {
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            document.getElementById('status-container').appendChild(statusDiv);
+        }
+        
+        async function testCORS() {
+            addStatus('开始测试CORS配置...', 'info');
+            
+            try {
+                const response = await fetch(testUrl, {
+                    method: 'HEAD',
+                    mode: 'cors'
+                });
+                
+                addStatus(`响应状态: ${response.status} ${response.statusText}`, 'success');
+                
+                // 检查CORS相关头
+                const corsHeaders = [
+                    'Access-Control-Allow-Origin',
+                    'Access-Control-Allow-Methods',
+                    'Access-Control-Allow-Headers'
+                ];
+                
+                corsHeaders.forEach(header => {
+                    const value = response.headers.get(header);
+                    if (value) {
+                        addStatus(`✅ ${header}: ${value}`, 'success');
+                    } else {
+                        addStatus(`❌ ${header}: 未设置`, 'error');
+                    }
+                });
+                
+                // 尝试获取实际内容
+                const fullResponse = await fetch(testUrl, { mode: 'cors' });
+                const blob = await fullResponse.blob();
+                addStatus(`✅ 成功获取图片内容，大小: ${(blob.size / 1024).toFixed(2)} KB`, 'success');
+                addStatus('🎉 CORS配置正常工作！', 'success');
+                
+            } catch (error) {
+                addStatus(`❌ CORS测试失败: ${error.message}`, 'error');
+                addStatus('可能需要等待几分钟让配置生效', 'info');
+            }
+        }
+        
+        function testDirectDownload() {
+            addStatus('测试直接下载（HTML5 download属性）...', 'info');
+            
+            const a = document.createElement('a');
+            a.href = testUrl;
+            a.download = 'test-direct.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            addStatus('✅ 已触发直接下载', 'success');
+        }
+        
+        async function testBlobDownload() {
+            addStatus('测试Blob下载...', 'info');
+            
+            try {
+                const response = await fetch(testUrl, { mode: 'cors' });
+                const blob = await response.blob();
+                
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = 'test-blob.png';
+                document.body.appendChild(a);
+                a.click();
+                
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(blobUrl);
+                }, 100);
+                
+                addStatus('✅ Blob下载成功！CORS配置正确', 'success');
+            } catch (error) {
+                addStatus(`❌ Blob下载失败: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testFinalDownload() {
+            addStatus('测试网站实际使用的下载方案...', 'info');
+            
+            // 模拟download-handler.js的逻辑
+            try {
+                // 先尝试直接下载
+                const a = document.createElement('a');
+                a.href = testUrl;
+                a.download = 'final-test.png';
+                a.target = '_blank';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                addStatus('✅ 已触发下载（方法1）', 'success');
+                
+                // 同时尝试blob下载
+                fetch(testUrl, { mode: 'cors' })
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const blobUrl = window.URL.createObjectURL(blob);
+                        const a2 = document.createElement('a');
+                        a2.href = blobUrl;
+                        a2.download = 'final-test-blob.png';
+                        document.body.appendChild(a2);
+                        a2.click();
+                        
+                        setTimeout(() => {
+                            document.body.removeChild(a2);
+                            window.URL.revokeObjectURL(blobUrl);
+                        }, 100);
+                        
+                        addStatus('✅ Blob下载也成功了！（方法2）', 'success');
+                        addStatus('🎉 所有下载方法都正常工作！', 'success');
+                    })
+                    .catch(err => {
+                        addStatus('⚠️ Blob下载不可用，但直接下载应该可以工作', 'info');
+                    });
+                    
+            } catch (error) {
+                addStatus(`❌ 下载测试失败: ${error.message}`, 'error');
+            }
+        }
+        
+        // 页面加载时自动测试
+        window.addEventListener('DOMContentLoaded', () => {
+            addStatus('页面加载完成，CORS配置可能需要5-10分钟生效', 'info');
+            addStatus('请点击上面的按钮进行测试', 'info');
+        });
+    </script>
+</body>
+</html>

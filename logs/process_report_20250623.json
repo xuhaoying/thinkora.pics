@@ -1,0 +1,130 @@
+{
+  "date": "2025-06-23T20:58:43.512973",
+  "total_processed": 20,
+  "successful": 20,
+  "low_quality": 0,
+  "errors": 0,
+  "success_rate": 100.0,
+  "processed_images": [
+    {
+      "id": "unsplash_kGGPlnA1Oco",
+      "platform": "unsplash",
+      "quality_score": 80,
+      "transparency_ratio": 0.4999075263397503
+    },
+    {
+      "id": "unsplash_GwWgErYW6Q8",
+      "platform": "unsplash",
+      "quality_score": 90,
+      "transparency_ratio": 0.7784846864673276
+    },
+    {
+      "id": "unsplash_4IiVbw6QYlQ",
+      "platform": "unsplash",
+      "quality_score": 80,
+      "transparency_ratio": 0.9400582620406512
+    },
+    {
+      "id": "unsplash_jVDUm1bl44s",
+      "platform": "unsplash",
+      "quality_score": 90,
+      "transparency_ratio": 0.4687284994068802
+    },
+    {
+      "id": "unsplash_VyyVOQEOWW4",
+      "platform": "unsplash",
+      "quality_score": 90,
+      "transparency_ratio": 0.4606184756820878
+    },
+    {
+      "id": "unsplash_7uSVIDnf2gs",
+      "platform": "unsplash",
+      "quality_score": 90,
+      "transparency_ratio": 0.8158614095052084
+    },
+    {
+      "id": "unsplash_afz2oM3ycPw",
+      "platform": "unsplash",
+      "quality_score": 80,
+      "transparency_ratio": 0.6229732009300208
+    },
+    {
+      "id": "unsplash_gPN6whStEaQ",
+      "platform": "unsplash",
+      "quality_score": 80,
+      "transparency_ratio": 0.9763677476285021
+    },
+    {
+      "id": "unsplash_xJdnmZgczfA",
+      "platform": "unsplash",
+      "quality_score": 80,
+      "transparency_ratio": 0.9469880327141654
+    },
+    {
+      "id": "pexels_7598077",
+      "platform": "pexels",
+      "quality_score": 90,
+      "transparency_ratio": 0.9585227347056613
+    },
+    {
+      "id": "pexels_7233356",
+      "platform": "pexels",
+      "quality_score": 90,
+      "transparency_ratio": 0.992344891583478
+    },
+    {
+      "id": "pexels_7956852",
+      "platform": "pexels",
+      "quality_score": 80,
+      "transparency_ratio": 0.9834043886091707
+    },
+    {
+      "id": "pexels_4210782",
+      "platform": "pexels",
+      "quality_score": 80,
+      "transparency_ratio": 0.8241824958144661
+    },
+    {
+      "id": "pexels_1809340",
+      "platform": "pexels",
+      "quality_score": 90,
+      "transparency_ratio": 0.7308398739894093
+    },
+    {
+      "id": "pexels_2008145",
+      "platform": "pexels",
+      "quality_score": 80,
+      "transparency_ratio": 0.8516974320065274
+    },
+    {
+      "id": "pexels_7598250",
+      "platform": "pexels",
+      "quality_score": 90,
+      "transparency_ratio": 0.989911960362712
+    },
+    {
+      "id": "pexels_6787050",
+      "platform": "pexels",
+      "quality_score": 90,
+      "transparency_ratio": 0.6867016921808691
+    },
+    {
+      "id": "pexels_5083403",
+      "platform": "pexels",
+      "quality_score": 90,
+      "transparency_ratio": 0.8338699158999687
+    },
+    {
+      "id": "pexels_10060923",
+      "platform": "pexels",
+      "quality_score": 80,
+      "transparency_ratio": 0.8339700829018738
+    },
+    {
+      "id": "unsplash_iDT7sVbh1-4",
+      "platform": "unsplash",
+      "quality_score": 80,
+      "transparency_ratio": 0.346435721243368
+    }
+  ]
+}

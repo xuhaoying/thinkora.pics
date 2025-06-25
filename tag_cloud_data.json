@@ -1,0 +1,252 @@
+[
+  {
+    "tag": "office",
+    "count": 18,
+    "weight": 2.8
+  },
+  {
+    "tag": "notebook",
+    "count": 17,
+    "weight": 2.7
+  },
+  {
+    "tag": "smartphone",
+    "count": 16,
+    "weight": 2.6
+  },
+  {
+    "tag": "business",
+    "count": 14,
+    "weight": 2.4
+  },
+  {
+    "tag": "pen",
+    "count": 13,
+    "weight": 2.3
+  },
+  {
+    "tag": "desk",
+    "count": 13,
+    "weight": 2.3
+  },
+  {
+    "tag": "computer",
+    "count": 11,
+    "weight": 2.1
+  },
+  {
+    "tag": "mobile",
+    "count": 10,
+    "weight": 2.0
+  },
+  {
+    "tag": "woman",
+    "count": 10,
+    "weight": 2.0
+  },
+  {
+    "tag": "furniture",
+    "count": 10,
+    "weight": 2.0
+  },
+  {
+    "tag": "wellness",
+    "count": 9,
+    "weight": 1.9
+  },
+  {
+    "tag": "spa",
+    "count": 9,
+    "weight": 1.9
+  },
+  {
+    "tag": "writing",
+    "count": 9,
+    "weight": 1.9
+  },
+  {
+    "tag": "work",
+    "count": 9,
+    "weight": 1.9
+  },
+  {
+    "tag": "iphone",
+    "count": 9,
+    "weight": 1.9
+  },
+  {
+    "tag": "phone",
+    "count": 9,
+    "weight": 1.9
+  },
+  {
+    "tag": "mobile phone",
+    "count": 9,
+    "weight": 1.9
+  },
+  {
+    "tag": "laptop",
+    "count": 8,
+    "weight": 1.8
+  },
+  {
+    "tag": "hand",
+    "count": 8,
+    "weight": 1.8
+  },
+  {
+    "tag": "massage",
+    "count": 8,
+    "weight": 1.8
+  },
+  {
+    "tag": "home",
+    "count": 8,
+    "weight": 1.8
+  },
+  {
+    "tag": "living room",
+    "count": 8,
+    "weight": 1.8
+  },
+  {
+    "tag": "modern",
+    "count": 8,
+    "weight": 1.8
+  },
+  {
+    "tag": "coffee",
+    "count": 7,
+    "weight": 1.7
+  },
+  {
+    "tag": "write",
+    "count": 7,
+    "weight": 1.7
+  },
+  {
+    "tag": "treatment",
+    "count": 7,
+    "weight": 1.7
+  },
+  {
+    "tag": "communication",
+    "count": 7,
+    "weight": 1.7
+  },
+  {
+    "tag": "technology",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "nature",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "calculator",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "finance",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "accounting",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "girl",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "screen",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "home office",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "room",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "interior design",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "table",
+    "count": 6,
+    "weight": 1.6
+  },
+  {
+    "tag": "relax",
+    "count": 5,
+    "weight": 1.5
+  },
+  {
+    "tag": "workspace",
+    "count": 5,
+    "weight": 1.5
+  },
+  {
+    "tag": "interior",
+    "count": 5,
+    "weight": 1.5
+  },
+  {
+    "tag": "indoors",
+    "count": 5,
+    "weight": 1.5
+  },
+  {
+    "tag": "apple",
+    "count": 5,
+    "weight": 1.5
+  },
+  {
+    "tag": "sofa",
+    "count": 5,
+    "weight": 1.5
+  },
+  {
+    "tag": "flower wallpaper",
+    "count": 5,
+    "weight": 1.5
+  },
+  {
+    "tag": "telephone",
+    "count": 5,
+    "weight": 1.5
+  },
+  {
+    "tag": "digital",
+    "count": 4,
+    "weight": 1.4
+  },
+  {
+    "tag": "notes",
+    "count": 4,
+    "weight": 1.4
+  },
+  {
+    "tag": "education",
+    "count": 4,
+    "weight": 1.4
+  },
+  {
+    "tag": "hands",
+    "count": 4,
+    "weight": 1.4
+  }
+]

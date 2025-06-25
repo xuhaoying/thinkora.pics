@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Free Download | Thinkora.pics</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="{{ keywords }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ canonical_url }}">
+    
+    <!-- Language -->
+    <meta name="language" content="English">
+    <meta http-equiv="content-language" content="en">
+    
+    <!-- SEO & Social -->
+    <meta property="og:title" content="{{ title }} - Thinkora.pics">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:image" content="https://thinkora.pics{{ image_url }}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Thinkora.pics">
+    <meta property="article:published_time" content="{{ upload_date }}">
+    <meta property="article:author" content="{{ author_name }}">
+    <meta property="article:tag" content="{{ category }}">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="https://thinkora.pics{{ image_url }}">
+    
+    <!-- Image specific meta -->
+    <meta property="og:image:width" content="{{ dimensions.split(' x ')[0] }}">
+    <meta property="og:image:height" content="{{ dimensions.split(' x ')[1] }}">
+    <meta property="og:image:type" content="image/jpeg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      "name": "{{ title }}",
+      "description": "{{ description }}",
+      "contentUrl": "https://thinkora.pics{{ image_url }}",
+      "uploadDate": "{{ upload_date }}",
+      "width": "{{ dimensions.split(' x ')[0] }}",
+      "height": "{{ dimensions.split(' x ')[1] }}",
+      "encodingFormat": "image/jpeg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "acquireLicensePage": "https://thinkora.pics/license",
+      "copyrightNotice": "Free for commercial use, no attribution required",
+      "creditText": "Photo by {{ author_name }} on Thinkora.pics",
+      "creator": {
+        "@type": "Person",
+        "name": "{{ author_name }}",
+        "url": "{{ author_url }}"
+      },
+      "keywords": "{{ keywords }}"
+    }
+    </script>
+    
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "https://thinkora.pics",
+            "name": "Home"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://thinkora.pics/category/{{ category }}",
+            "name": "{{ category|title }}"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "{{ canonical_url }}",
+            "name": "{{ title }}"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="/css/styles-enhanced.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖼️</text></svg>">
+    
+    <!-- Preload image -->
+    <link rel="preload" as="image" href="{{ image_url }}">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="site-title"><a href="/">Thinkora.pics</a></div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a> › 
+            <a href="/category/{{ category }}">{{ category|title }}</a> › 
+            <span aria-current="page">{{ title }}</span>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="detail-container">
+            <div class="detail-image-wrapper">
+                <a href="{{ download_url }}" download="{{ image_id }}.jpg" title="Click to download {{ title }}">
+                    <img src="{{ image_url }}" 
+                         alt="{{ title }} - {{ description }}" 
+                         loading="eager"
+                         width="{{ dimensions.split(' x ')[0] }}"
+                         height="{{ dimensions.split(' x ')[1] }}">
+                </a>
+            </div>
+            <div class="detail-info">
+                <h1>{{ title }}</h1>
+                <p class="description">{{ description }}</p>
+                
+                <dl class="detail-meta">
+                    <dt>Author:</dt>
+                    <dd><a href="{{ author_url }}" target="_blank" rel="noopener noreferrer">{{ author_name }}</a></dd>
+                    
+                    <dt>Dimensions:</dt>
+                    <dd>{{ dimensions }} pixels</dd>
+                    
+                    <dt>File Size:</dt>
+                    <dd>{{ file_size }}</dd>
+                    
+                    <dt>Category:</dt>
+                    <dd><a href="/category/{{ category }}">{{ category|title }}</a></dd>
+                    
+                    <dt>Format:</dt>
+                    <dd>JPEG (High Quality)</dd>
+                    
+                    <dt>License:</dt>
+                    <dd>Free for commercial use, no attribution required</dd>
+                </dl>
+                
+                {% if tags %}
+                <div class="tags-section">
+                    <h2>Related Tags</h2>
+                    <div class="tags">
+                        {% for tag in tags %}
+                        <a href="/tag/{{ tag|lower|replace(' ', '-') }}" class="tag">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="download-section">
+                    <a href="{{ download_url }}" class="download-button" download="{{ image_id }}.jpg">
+                        Download Free Image
+                    </a>
+                    <p class="download-info">Right-click and "Save as" if download doesn't start</p>
+                </div>
+                
+                <nav class="detail-nav" aria-label="Image navigation">
+                    {% if prev_image %}
+                        <a href="/images/{{ prev_image.id }}.html" 
+                           rel="prev" 
+                           title="{{ prev_image.seoTitle }}">&laquo; Previous</a>
+                    {% endif %}
+                    {% if next_image %}
+                        <a href="/images/{{ next_image.id }}.html" 
+                           rel="next" 
+                           title="{{ next_image.seoTitle }}">Next &raquo;</a>
+                    {% endif %}
+                </nav>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Thinkora.pics. Free transparent PNG images for commercial use.</p>
+        <p><a href="/sitemap.xml">Sitemap</a> | <a href="/">Browse All Images</a></p>
+    </footer>
+
+    <script src="/js/download-force.js"></script>
+</body>
+</html>
