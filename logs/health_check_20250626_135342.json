@@ -1,0 +1,108 @@
+{
+  "timestamp": "2025-06-26T13:53:42.807127",
+  "summary": {
+    "ok": 1,
+    "warning": 5,
+    "error": 3,
+    "total": 9
+  },
+  "checks": [
+    {
+      "name": "数据库连接",
+      "status": "error",
+      "message": "数据库连接失败: no such column: processed",
+      "details": {},
+      "timestamp": "2025-06-26T13:53:36.915205"
+    },
+    {
+      "name": "环境变量",
+      "status": "warning",
+      "message": "缺少环境变量: UNSPLASH_ACCESS_KEY, PIXABAY_API_KEY, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_ACCOUNT_ID",
+      "details": {
+        "missing": [
+          "UNSPLASH_ACCESS_KEY",
+          "PIXABAY_API_KEY",
+          "R2_ACCESS_KEY_ID",
+          "R2_SECRET_ACCESS_KEY",
+          "R2_ACCOUNT_ID"
+        ],
+        "present": []
+      },
+      "timestamp": "2025-06-26T13:53:36.915220"
+    },
+    {
+      "name": "Python依赖",
+      "status": "error",
+      "message": "缺少依赖包: python-dotenv",
+      "details": {
+        "missing": [
+          "python-dotenv"
+        ],
+        "present": [
+          "requests",
+          "sqlite3",
+          "PIL",
+          "rembg",
+          "boto3"
+        ]
+      },
+      "timestamp": "2025-06-26T13:53:38.196237"
+    },
+    {
+      "name": "目录结构",
+      "status": "warning",
+      "message": "目录结构正常，已创建: scripts_new, processed_images, backups",
+      "details": {
+        "present": [
+          "logs"
+        ],
+        "missing": [
+          "scripts_new",
+          "processed_images",
+          "backups"
+        ],
+        "created": [
+          "scripts_new",
+          "processed_images",
+          "backups"
+        ]
+      },
+      "timestamp": "2025-06-26T13:53:38.196403"
+    },
+    {
+      "name": "R2连接",
+      "status": "error",
+      "message": "R2凭证未配置",
+      "details": {},
+      "timestamp": "2025-06-26T13:53:38.196411"
+    },
+    {
+      "name": "Unsplash API",
+      "status": "warning",
+      "message": "未配置Unsplash API密钥",
+      "details": {},
+      "timestamp": "2025-06-26T13:53:38.196414"
+    },
+    {
+      "name": "Pixabay API",
+      "status": "warning",
+      "message": "未配置Pixabay API密钥",
+      "details": {},
+      "timestamp": "2025-06-26T13:53:38.196415"
+    },
+    {
+      "name": "本地网站",
+      "status": "warning",
+      "message": "本地服务器响应异常: 500",
+      "details": {},
+      "timestamp": "2025-06-26T13:53:41.264124"
+    },
+    {
+      "name": "R2图片访问",
+      "status": "ok",
+      "message": "R2图片可正常访问",
+      "details": {},
+      "timestamp": "2025-06-26T13:53:42.806797"
+    }
+  ]
+}
